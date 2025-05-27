@@ -4,19 +4,19 @@ import Image from "next/image";
 
 const ProductCard = () => {
   return (
-    <div className="pb-28 flex flex-col items-center">
+    <div id="beneficios" className="pb-28 flex flex-col items-center">
       <div className="flex flex-col items-center justify-center pt-28 px-12 pb-10 md:w-[600px]">
         <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80">
-          Everything you need
+          Olvidate de usar Excel
         </div>
         <div className="text-3xl md:text-4xl lg:text-5xl py-6 font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text">
-          Streamlined for easy management
+        Convierte números en decisiones
         </div>
 
         <div className="text-center text-lg mb-8 md:text-xl">
-          Enjoy customizable lists, team work tools, and smart tracking all in
-          one place. Set tasks, get reminders, and see your progress simply and
-          quickly.
+        Visualiza tus ventas, márgenes y pedidos en tiempo real con reportes claros y accionables.
+
+
         </div>
       </div>
 
@@ -24,22 +24,21 @@ const ProductCard = () => {
         <div className="shadow-2xl rounded-xl flex justify-center items-center flex-col p-8 max-w-[400px]">
           <Image src={Helix} alt="Helix" className="pb-4" />
           <div className="text-2xl font-bold pb-3 text-center">
-            Integration ecosystem
+          Tu centro de control
           </div>
           <div className="text-center">
-            Enhance your productivity by connecting with your favorite tools,
-            keeping all your essentials in one place.
+          Evita el caos de múltiples plataformas. Gestiona tu inventario desde un único lugar.
           </div>
         </div>
 
         <div className="shadow-2xl rounded-xl flex justify-center items-center flex-col p-8 max-w-[400px]">
           <Image src={Cube} alt="Cube" className="pb-4" />
           <div className="text-2xl font-bold pb-3 text-center">
-            Goal setting and tracking
+          Metas claras, control real
+
           </div>
           <div className="text-center">
-            Define and track your goals, breaking down objectives into
-            achievable tasks to keep your targets in sight.
+          Convierte tus metas de negocio en acciones medibles y visualízalas en tiempo real.
           </div>
         </div>
       </div>

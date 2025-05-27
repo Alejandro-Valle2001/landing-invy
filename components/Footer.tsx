@@ -1,66 +1,72 @@
 import Image from "next/image";
-import Logo from "@/public/assests/logo.png";
+import Logo from "@/public/assests/fotologo.png";
 import {
-  FaLinkedin,
-  FaPinterest,
+  FaFacebook,
   FaTiktok,
-  FaXTwitter,
   FaYoutube,
+  FaEnvelope,
+  FaPhone,
 } from "react-icons/fa6";
 import { AiFillInstagram } from "react-icons/ai";
-import { MdOutlineArrowOutward } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col md:flex-row bg-black text-white p-16 gap-8 justify-between md:px-20 xl:px-44">
-      <div className="flex flex-col gap-8 text-gray-300/85 max-w-[300px]">
-        <Image src={Logo} alt="Logo" className="cursor-pointer" />
+    <div className="flex flex-col lg:flex-row bg-black text-white p-12 md:p-16 gap-8 justify-between md:px-20 xl:px-44">
+      {/* Sección principal con logo y descripción */}
+      <div className="flex flex-col gap-6 text-gray-300/85 max-w-[350px]">
+        <div className="flex items-center gap-3">
+          <Image src={Logo} alt="Invy Logo" className="h-10 w-auto" width={120} height={40} />
+          <span className="text-2xl font-bold text-white">invy</span>
+        </div>
+        <div className="text-lg text-gray-300">
+          Optimiza tu inventario, impulsa tu negocio
+        </div>
+        
+        {/* Redes sociales */}
         <div>
-          This website is developed by{" "}
-          <div className="font-semibold text-white hover:underline text-lg">
-            <a href="https://github.com/tanishkadeep">
-              Tanishka Deep <MdOutlineArrowOutward className="inline" />
+          <div className="font-bold text-lg text-white mb-4">Síguenos en redes sociales</div>
+          <div className="flex gap-4 text-2xl">
+            <a href="#" className="hover:scale-125 transition-transform hover:text-blue-500">
+              <FaFacebook />
+            </a>
+            <a href="#" className="hover:scale-125 transition-transform hover:text-pink-500">
+              <AiFillInstagram />
+            </a>
+            <a href="#" className="hover:scale-125 transition-transform hover:text-red-500">
+              <FaYoutube />
+            </a>
+            <a href="#" className="hover:scale-125 transition-transform hover:text-white">
+              <FaTiktok />
             </a>
           </div>
         </div>
-        <div className="flex gap-4 text-2xl cursor-pointer">
-          <FaXTwitter className="hover:scale-125" />
-          <AiFillInstagram className="hover:scale-125" />
-          <FaPinterest className="hover:scale-125" />
-          <FaLinkedin className="hover:scale-125" />
-          <FaTiktok className="hover:scale-125" />
-          <FaYoutube className="hover:scale-125" />
+      </div>
+
+      {/* Sección de Recursos */}
+      <div className="flex flex-col gap-4">
+        <div className="font-bold text-lg text-white">Recursos</div>
+        <div className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">· Integraciones</div>
+        <div className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">· Manuales</div>
+        <div className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">· Condiciones de uso</div>
+        <div className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">· Política de privacidad</div>
+        <div className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">· Libro de reclamaciones</div>
+      </div>
+
+      {/* Sección de Contacto */}
+      <div className="flex flex-col gap-4">
+        <div className="font-bold text-lg text-white">Contacto</div>
+        <div className="flex items-center gap-3 text-gray-300/85">
+          <FaEnvelope className="text-blue-400" />
+          <a href="mailto:valbelperu@gmail.com" className="hover:text-white transition-colors">
+            valbelperu@gmail.com
+          </a>
         </div>
-      </div>
-      <div className="flex flex-col gap-4">
-        <div className="font-bold text-lg">Product</div>
-        <div className="cursor-pointer text-gray-300/85">Features</div>
-        <div className="cursor-pointer text-gray-300/85">Integrations</div>
-        <div className="cursor-pointer text-gray-300/85">Updates</div>
-        <div className="cursor-pointer text-gray-300/85">FAQ</div>
-        <div className="cursor-pointer text-gray-300/85">Pricing</div>
-      </div>
-      <div className="flex flex-col gap-4">
-        <div className="font-bold text-lg">Company</div>
-        <div className="cursor-pointer text-gray-300/85">About</div>
-        <div className="cursor-pointer text-gray-300/85">Blog</div>
-        <div className="cursor-pointer text-gray-300/85">Careers</div>
-        <div className="cursor-pointer text-gray-300/85">Manifesto</div>
-        <div className="cursor-pointer text-gray-300/85">Press</div>
-        <div className="cursor-pointer text-gray-300/85">Contact</div>
-      </div>
-      <div className="flex flex-col gap-4">
-        <div className="font-bold text-lg">Resources</div>
-        <div className="cursor-pointer text-gray-300/85">Examples</div>
-        <div className="cursor-pointer text-gray-300/85">Community</div>
-        <div className="cursor-pointer text-gray-300/85">Guides</div>
-        <div className="cursor-pointer text-gray-300/85">Docs</div>
-      </div>
-      <div className="flex flex-col gap-4">
-        <div className="font-bold text-lg">Legal</div>
-        <div className="cursor-pointer text-gray-300/85">Privacy </div>
-        <div className="cursor-pointer text-gray-300/85">Terms</div>
-        <div className="cursor-pointer text-gray-300/85">Security</div>
+        <div className="flex items-center gap-3 text-gray-300/85">
+          <FaPhone className="text-green-400" />
+          <a href="tel:+51977739546" className="hover:text-white transition-colors">
+            +51 977 739 546
+          </a>
+        </div>
       </div>
     </div>
   );

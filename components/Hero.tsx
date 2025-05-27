@@ -6,10 +6,12 @@ import HeroImage from "@/public/assests/Visual.png";
 import Cylinder from "@/public/assests/cylinder.png";
 import HalfTorus from "@/public/assests/half-torus.png";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { TypeAnimation } from "react-type-animation";
 
 const Hero = () => {
   const heroRef = useRef(null);
+  const [showButtons, setShowButtons] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -26,23 +28,59 @@ const Hero = () => {
       <div className="md:flex items-center justify-center gap-16">
         <div className="md:w-[478px]">
           <div className="border-2 w-fit p-0.5 px-1 lg:text-lg rounded-lg border-slate-400/80">
-            Version 2.0 is here
+            Hazlo simple hoy
           </div>
+          
           <div className="text-5xl md:text-7xl font-black my-7 bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text tracking-tighter">
-            Pathway to productivity
+            <TypeAnimation
+              sequence={[
+                1000, // Pausa inicial
+                'Controla tu inventario',
+                1500, // Pausa después del título
+              ]}
+              wrapper="span"
+              speed={50}
+              style={{ display: 'inline-block' }}
+              repeat={0}
+              cursor={true}
+              omitDeletionAnimation={true}
+            />
           </div>
           <div className="text-xl lg:text-2xl tracking-tighter opacity-85">
-            Celebrate the joy of accomplishment with an app designed to track
-            your progress, motivate your efforts, and celebrate your successes.
+            <TypeAnimation
+              sequence={[
+                2800, // Espera a que termine el título
+                'Organiza, vende y crece con una app intuitiva que transforma tu inventario en decisiones inteligentes.',
+                () => {
+                  // Callback que se ejecuta cuando termina la animación
+                  setTimeout(() => setShowButtons(true), 500);
+                }
+              ]}
+              wrapper="span"
+              speed={65}
+              style={{ display: 'inline-block' }}
+              repeat={0}
+              cursor={true}
+              omitDeletionAnimation={true}
+            />
           </div>
 
-          <div className="flex items-center gap-3 mt-6 text-lg">
-            <Button text="Get for free" />
+          {/* Botones que aparecen después de la animación */}
+          <motion.div 
+            className="flex items-center gap-3 mt-6 text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ 
+              opacity: showButtons ? 1 : 0, 
+              y: showButtons ? 0 : 20 
+            }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <Button text="Prueba Gratis" />
             <div className="cursor-pointer hover:underline">
-              Learn more
+              Explora la app
               <FaArrowRight className="h-3 w-3 inline ml-2" />
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="pt-12 md:pt-0 md:h-[648px] md:w-[648px] relative">

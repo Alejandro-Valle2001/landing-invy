@@ -41,18 +41,17 @@ const CTA = () => {
           }}
         />
         <div className="text-4xl md:text-5xl lg:text-6xl py-6 font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text">
-          Sign up for free today
+        Regístrate gratis hoy
         </div>
 
         <div className="text-center text-lg mb-8 md:text-xl">
-          Celebrate the joy of accomplishment with an app designed to track your
-          progress and motivate your efforts.
+        Celebra cada avance con una plataforma pensada para mostrar tu progreso, motivarte y ayudarte a lograr más con menos esfuerzo.
         </div>
 
         <div className="flex items-center gap-4 mt-4 text-lg">
-          <Button text="Get for free" />
+          <Button text="Prueba Gratis" />
           <div className="font-semibold cursor-pointer  hover:underline">
-            Learn more
+            Solicita ahora
             <FaArrowRight className="h-3 w-3 inline ml-2" />
           </div>
         </div>

@@ -1,26 +1,112 @@
 "use client";
 
 import Image from "next/image";
-import Avatar1 from "@/public/assests/avatar-1.png";
-import Avatar2 from "@/public/assests/avatar-2.png";
-import Avatar3 from "@/public/assests/avatar-3.png";
-import Avatar4 from "@/public/assests/avatar-4.png";
-import Avatar5 from "@/public/assests/avatar-5.png";
-import Avatar6 from "@/public/assests/avatar-6.png";
-import Avatar7 from "@/public/assests/avatar-7.png";
-import Avatar8 from "@/public/assests/avatar-8.png";
-import Avatar9 from "@/public/assests/avatar-9.png";
+import Avatar1 from "@/public/assests/mujer1.jpg";
+import Avatar2 from "@/public/assests/parra.jpg.jpeg";
+import Avatar3 from "@/public/assests/alejo.png";
+import Avatar4 from "@/public/assests/paco.jpeg";
+import Avatar5 from "@/public/assests/marce.jpg";
+import Avatar6 from "@/public/assests/mujer2.jpg";
+import Avatar7 from "@/public/assests/agurto.jpg";
+import Avatar8 from "@/public/assests/stefan.jpg";
+import Avatar9 from "@/public/assests/alejobot.jpg";
 import { motion } from "framer-motion";
 
 const Testimonials = () => {
+  // Testimonios únicos para evitar duplicación
+  const testimonialColumns = [
+    // Columna 1 (izquierda - oculta en móvil)
+    [
+      {
+        text: "Invy cambió todo. Ya no perdemos ventas por falta de stock.",
+        name: "Alejandra Rivera",
+        username: "@alerivera_tech",
+        avatar: Avatar1
+      },
+      {
+        text: "Los reportes automáticos de Invy nos ahorran horas cada día.",
+        name: "Juana Martínez",
+        username: "@jmartinez_biz",
+        avatar: Avatar6
+      },
+      {
+        text: "Invy transformó mi almacén. Todo está bajo control.",
+        name: "Alejandro Bustios",
+        username: "@bustiosalejandro",
+        avatar: Avatar3
+      }
+    ],
+    // Columna 2 (centro - siempre visible)
+    [
+      {
+        text: "Súper fácil de usar. En 2 días ya dominábamos Invy.",
+        name: "Carlos Agurto",
+        username: "@carlos_agurto_o",
+        avatar: Avatar7
+      },
+      {
+        text: "Con Invy veo todas mis sucursales en tiempo real. Increíble.",
+        name: "Christian Rodriguez",
+        username: "@cricri_0605",
+        avatar: Avatar2
+      },
+      {
+        text: "Las alertas de Invy son perfectas. Nunca más nos quedamos sin stock.",
+        name: "Marcelo Alvarado",
+        username: "@marceloalvardo",
+        avatar: Avatar5
+      }
+    ],
+    // Columna 3 (derecha - oculta en móvil)
+    [
+      {
+        text: "Invy mejoró la comunicación entre nuestros departamentos.",
+        name: "Neo Zapata",
+        username: "@neo_mzg",
+        avatar: Avatar4
+      },
+      {
+        text: "Todo en un solo lugar con Invy. Productos, movimientos, reportes.",
+        name: "Nabil Atta",
+        username: "@nabilattavelazco",
+        avatar: Avatar8
+      },
+      {
+        text: "Interfaz súper intuitiva. Invy se adapta a todo tipo de negocio.",
+        name: "Yoser Aranda",
+        username: "@yoser_03",
+        avatar: Avatar9
+      }
+    ]
+  ];
+
+  const renderTestimonialColumn = (testimonials: any[], isHidden = false) => (
+    <div className={isHidden ? "hidden md:block" : ""}>
+      {testimonials.map((testimonial, index) => (
+        <div key={index} className={`shadow-xl w-[310px] rounded-2xl p-8 ${index === 1 ? 'my-6' : ''}`}>
+          <div className="font-medium pb-4">
+            {testimonial.text}
+          </div>
+          <div className="flex items-center gap-3">
+            <Image src={testimonial.avatar} alt="Avatar" className="h-12 w-12" />
+            <div>
+              <div className="font-semibold">{testimonial.name}</div>
+              <div>{testimonial.username}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <div className="pt-12">
-      <div className="flex flex-col items-center px-28 pb-16">
-        <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl font-semibold border-slate-300/80">
-          Testimonials
+      <div className="flex flex-col items-center px-4 sm:px-12 lg:px-28 pb-16">
+        <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl font-semibold border-slate-300/80 mx-auto">
+          Testimonios reales
         </div>
-        <div className="text-4xl lg:text-5xl pt-6 font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text">
-          What our users say
+        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl pt-6 font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text max-w-2xl mx-auto leading-tight">
+          Lo que dicen nuestros clientes
         </div>
       </div>
       <div className="overflow-hidden [mask-image:linear-gradient(to_top,transparent,black,transparent)] h-[750px] mb-12 md:mb-28 lg:mb-36">
@@ -29,280 +115,25 @@ const Testimonials = () => {
             translateY: "-50%",
           }}
           transition={{
-            duration: 10,
+            duration: 15,
             repeat: Infinity,
             ease: "linear",
             repeatType: "loop",
           }}
+          className="flex flex-col"
         >
-          <div className="flex items-center justify-center overflow-x-hidden pb-4 gap-4 ">
-            <div className="hidden md:block">
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  As a seasoned designer always on the lookout for innovative
-                  tools, Framer.com instantly grabbed my attention.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar1} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Alex Rivera</div>
-                    <div>@jamietechguru00</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8 my-6">
-                <div className="font-medium pb-4">
-                  Our productivity has skyrocketed since we started using this
-                  tool.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar6} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Josh Smith</div>
-                    <div>@jjsmith</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  This app has completely transformed how I manage my projects
-                  and deadlines.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar3} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Morgan Lee</div>
-                    <div>@morganleewhiz</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  I was amazed at how quickly we were able to integrate this app
-                  into our workflow.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar7} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Casey Jordan</div>
-                    <div>@caseyj</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8 my-6">
-                <div className="font-medium pb-4">
-                  Planning and executing events has never been easier. This app
-                  helps me keep track of all the moving parts, ensuring nothing
-                  slips through the cracks.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar2} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Taylor Kim</div>
-                    <div>@taylorkimm</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  The customizability and integration capabilities of this app
-                  are top-notch.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar5} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Riley Smith</div>
-                    <div>@rileysmith1</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hidden md:block">
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  Adopting this app for our team has streamlined our project
-                  management and improved communication across the board.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar4} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Jordan Patels</div>
-                    <div>@jpatelsdesign</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  With this app, we can easily assign tasks, track progress, and
-                  manage documents all in one place.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar8} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Sam Dawson</div>
-                    <div>@dawsontechtips</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  Its user-friendly interface and robust features support our
-                  diverse needs.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar9} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Casey Harper</div>
-                    <div>@casey09</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Primera instancia de testimonios */}
+          <div className="flex items-center justify-center overflow-x-hidden pb-4 gap-4">
+            {renderTestimonialColumn(testimonialColumns[0], true)}
+            {renderTestimonialColumn(testimonialColumns[1])}
+            {renderTestimonialColumn(testimonialColumns[2], true)}
           </div>
-
-          <div className="flex items-center justify-center overflow-x-hidden gap-4 ">
-            <div className="hidden md:block">
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  As a seasoned designer always on the lookout for innovative
-                  tools, Framer.com instantly grabbed my attention.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar1} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Alex Rivera</div>
-                    <div>@jamietechguru00</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8 my-6">
-                <div className="font-medium pb-4">
-                  Our productivity has skyrocketed since we started using this
-                  tool.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar6} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Josh Smith</div>
-                    <div>@jjsmith</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  This app has completely transformed how I manage my projects
-                  and deadlines.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar3} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Morgan Lee</div>
-                    <div>@morganleewhiz</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  I was amazed at how quickly we were able to integrate this app
-                  into our workflow.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar7} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Casey Jordan</div>
-                    <div>@caseyj</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8 my-6">
-                <div className="font-medium pb-4">
-                  Planning and executing events has never been easier. This app
-                  helps me keep track of all the moving parts, ensuring nothing
-                  slips through the cracks.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar2} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Taylor Kim</div>
-                    <div>@taylorkimm</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  The customizability and integration capabilities of this app
-                  are top-notch.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar5} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Riley Smith</div>
-                    <div>@rileysmith1</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hidden md:block">
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  Adopting this app for our team has streamlined our project
-                  management and improved communication across the board.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar4} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Jordan Patels</div>
-                    <div>@jpatelsdesign</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  With this app, we can easily assign tasks, track progress, and
-                  manage documents all in one place.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar8} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Sam Dawson</div>
-                    <div>@dawsontechtips</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="shadow-xl w-[310px] rounded-2xl p-8">
-                <div className="font-medium pb-4">
-                  Its user-friendly interface and robust features support our
-                  diverse needs.
-                </div>
-                <div className="flex items-center gap-3">
-                  <Image src={Avatar9} alt="Avatar" className="h-12 w-12" />
-                  <div>
-                    <div className="font-semibold">Casey Harper</div>
-                    <div>@casey09</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          
+          {/* Segunda instancia idéntica para loop perfecto */}
+          <div className="flex items-center justify-center overflow-x-hidden pb-4 gap-4">
+            {renderTestimonialColumn(testimonialColumns[0], true)}
+            {renderTestimonialColumn(testimonialColumns[1])}
+            {renderTestimonialColumn(testimonialColumns[2], true)}
           </div>
         </motion.div>
       </div>
