@@ -53,20 +53,25 @@ const Pricing = () => {
 
       <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center pb-16 gap-6 lg:gap-8 mt-2 px-4 sm:px-6 lg:px-0">
         <div className="shadow-xl border-gray-100 border-2 rounded-2xl p-5 sm:p-6 w-full max-w-sm flex flex-col">
-          <div className="font-bold text-gray-500">Starter</div>
+          <div className="flex justify-between items-center flex-wrap gap-2">
+            <div className="font-bold text-gray-500">Starter</div>
+            <div className="border-2 w-fit p-0.5 px-2 sm:px-3 text-xs rounded-xl border-slate-300/80 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold tracking-tighter">
+              Gratis
+            </div>
+          </div>
           <div className="py-4 sm:py-5">
             <span className="font-extrabold text-4xl sm:text-5xl">
-              S/.{isAnnual ? '37' : '49'}
+              S/.{isAnnual ? '0' : '0'}
             </span>
             <span className="font-semibold text-gray-600 text-lg sm:text-xl">/mes</span>
             {isAnnual && (
               <div className="text-sm text-gray-600 font-medium">
-                Facturado anualmente
+                
               </div>
             )}
             {isAnnual && (
               <div className="text-sm text-green-600 font-medium">
-                Ahorras S/.144 al año
+                ¡Completamente gratis!
               </div>
             )}
           </div>
@@ -75,7 +80,7 @@ const Pricing = () => {
               <IoMdCheckmark className="inline mr-2 text-green-500" /> Control de Inventario
             </div>
             <div className="text-sm sm:text-base">
-              <IoMdCheckmark className="inline mr-2 text-green-500" /> Reportes básicos
+              <IoMdCheckmark className="inline mr-2 text-green-500" /> Sin agregar datos de tarjeta de crédito
             </div>
             <div className="text-sm sm:text-base">
               <IoMdCheckmark className="inline mr-2 text-green-500" /> Limite de 10 productos
@@ -88,58 +93,87 @@ const Pricing = () => {
             </div>
           </div>
           <button className="text-white mt-4 sm:mt-6 bg-black py-2.5 w-full rounded-lg cursor-pointer font-medium hover:bg-gray-800 transition-colors">
-            Solicita Ahora
+            Empezar Ahora
           </button>
         </div>
 
-        <div className="shadow-2xl border-2 rounded-2xl p-5 sm:p-6 bg-black text-white w-full max-w-sm flex flex-col">
-          <div className="flex justify-between items-center flex-wrap gap-2">
-            <div className="font-bold text-gray-500">Pro</div>
-            <div className="border-2 w-fit p-0.5 px-2 sm:px-3 text-xs rounded-xl border-slate-300/20 bg-gradient-to-r from-pink-500  via-lime-600 to-sky-400 text-transparent bg-clip-text font-bold tracking-tighter">
-              Recomendado
+        <div className="shadow-2xl border-2 rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white w-full max-w-sm flex flex-col relative overflow-hidden">
+          {/* Efecto de brillo en el fondo */}
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-xl"></div>
+          <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-green-500/20 to-cyan-500/20 rounded-full blur-xl"></div>
+          
+          <div className="flex justify-between items-center flex-wrap gap-2 relative z-10">
+            <div className="font-bold text-white text-lg">Pro</div>
+            <div className="relative">
+              <div className="border-2 w-fit p-1 px-3 text-xs rounded-xl border-gradient bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 text-white font-bold tracking-tighter shadow-lg animate-pulse">
+                Recomendado
+              </div>
             </div>
           </div>
-          <div className="py-4 sm:py-5">
-            <span className="font-extrabold text-4xl sm:text-5xl">
-              S/.{isAnnual ? '97' : '129'}
-            </span>
-            <span className="font-semibold text-gray-600 text-lg sm:text-xl">/mes</span>
+          <div className="py-4 sm:py-5 relative z-10">
+            <div className="flex items-baseline gap-1">
+              <span className="font-extrabold text-4xl sm:text-5xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                S/.{isAnnual ? '97' : '129'}
+              </span>
+              <span className="font-semibold text-gray-400 text-lg sm:text-xl">/mes</span>
+            </div>
             {isAnnual && (
-              <div className="text-sm text-gray-600 font-medium">
+              <div className="text-sm text-gray-400 font-medium mt-1">
                 Facturado anualmente
               </div>
             )}
             {isAnnual && (
-              <div className="text-sm text-green-600 font-medium">
+              <div className="text-sm bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent font-bold mt-1">
                 Ahorras S/.384 al año
               </div>
             )}
           </div>
-          <div className="flex flex-col gap-4 sm:gap-6 flex-grow">
-            <div className="text-sm sm:text-base">
-              <IoMdCheckmark className="inline mr-2 text-green-400" /> Control de Inventario
+          <div className="flex flex-col gap-3 sm:gap-4 flex-grow relative z-10">
+            <div className="text-sm sm:text-base flex items-center">
+              <div className="bg-green-500 rounded-full p-1 mr-3 flex-shrink-0">
+                <IoMdCheckmark className="text-white text-xs" />
+              </div>
+              <span>Control de Inventario Completo</span>
             </div>
-            <div className="text-sm sm:text-base">
-              <IoMdCheckmark className="inline mr-2 text-green-400" /> Reportes Avanzados
+            <div className="text-sm sm:text-base flex items-center">
+              <div className="bg-green-500 rounded-full p-1 mr-3 flex-shrink-0">
+                <IoMdCheckmark className="text-white text-xs" />
+              </div>
+              <span>Reportes y Análisis Avanzados</span>
             </div>
-            <div className="text-sm sm:text-base">
-              <IoMdCheckmark className="inline mr-2 text-green-400" /> Productos ilimitados
+            <div className="text-sm sm:text-base flex items-center">
+              <div className="bg-green-500 rounded-full p-1 mr-3 flex-shrink-0">
+                <IoMdCheckmark className="text-white text-xs" />
+              </div>
+              <span>Productos Ilimitados</span>
             </div>
-            <div className="text-sm sm:text-base">
-              <IoMdCheckmark className="inline mr-2 text-green-400" /> Alertas Claves
+            <div className="text-sm sm:text-base flex items-center">
+              <div className="bg-green-500 rounded-full p-1 mr-3 flex-shrink-0">
+                <IoMdCheckmark className="text-white text-xs" />
+              </div>
+              <span>Alertas Inteligentes</span>
             </div>
-            <div className="text-sm sm:text-base">
-              <IoMdCheckmark className="inline mr-2 text-green-400" /> Graficos Avanzados
+            <div className="text-sm sm:text-base flex items-center">
+              <div className="bg-green-500 rounded-full p-1 mr-3 flex-shrink-0">
+                <IoMdCheckmark className="text-white text-xs" />
+              </div>
+              <span>Dashboard Interactivo</span>
             </div>
-            <div className="text-sm sm:text-base">
-              <IoMdCheckmark className="inline mr-2 text-green-400" /> Soporte Prioritario 24/7
+            <div className="text-sm sm:text-base flex items-center">
+              <div className="bg-green-500 rounded-full p-1 mr-3 flex-shrink-0">
+                <IoMdCheckmark className="text-white text-xs" />
+              </div>
+              <span>Soporte Prioritario 24/7</span>
             </div>
-            <div className="text-sm sm:text-base">
-              <IoMdCheckmark className="inline mr-2 text-green-400" /> Sin limite de usuarios
+            <div className="text-sm sm:text-base flex items-center">
+              <div className="bg-green-500 rounded-full p-1 mr-3 flex-shrink-0">
+                <IoMdCheckmark className="text-white text-xs" />
+              </div>
+              <span>Usuarios Ilimitados</span>
             </div>
           </div>
-          <button className="text-black font-medium mt-4 sm:mt-6 bg-white py-2.5 w-full rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
-            Solicita Ahora
+          <button className="text-black font-bold mt-4 sm:mt-6 bg-gradient-to-r from-white to-gray-100 py-3 w-full rounded-lg cursor-pointer hover:from-gray-100 hover:to-white transition-all duration-300 shadow-lg transform hover:scale-105 relative z-10">
+            Empezar Ahora
           </button>
         </div>
         <div className="shadow-xl border-gray-100 border-2 rounded-2xl p-5 sm:p-6 w-full max-w-sm flex flex-col">
@@ -185,9 +219,7 @@ const Pricing = () => {
             <div className="text-sm sm:text-base">
               <IoMdCheckmark className="inline mr-2 text-green-500" />Integración con Falabella
             </div>
-            <div className="text-sm sm:text-base">
-              <IoMdCheckmark className="inline mr-2 text-green-500" />Agente de Inteligencia Artificial
-            </div>
+            
             <div className="text-sm sm:text-base">
               <IoMdCheckmark className="inline mr-2 text-green-500" />Múltiples Sucursales
             </div>
