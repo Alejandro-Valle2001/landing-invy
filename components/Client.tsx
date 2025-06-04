@@ -112,20 +112,20 @@ const Client = () => {
             <div className="w-full lg:w-1/2 relative">
               <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md h-[400px] sm:h-[500px] lg:h-[550px] mx-auto bg-black rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl">
                 {clients.map((client, index) => (
-                                     <video
-                     key={index}
-                     ref={(el) => {
-                       videoRefs.current[index] = el;
-                     }}
-                     className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                       index === currentIndex ? 'opacity-100' : 'opacity-0'
-                     }`}
-                     style={{ minHeight: '500px' }}
-                     muted
-                     loop
-                     playsInline
-                     preload="metadata"
-                   >
+                  <video
+                    key={index}
+                    ref={(el) => {
+                      videoRefs.current[index] = el;
+                    }}
+                    className={`absolute inset-0 w-full h-full object-cover object-center scale-105 transition-opacity duration-500 ${
+                      index === currentIndex ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    style={{ minHeight: '500px' }}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                  >
                     <source src={client.video} type="video/mp4" />
                     Tu navegador no soporta videos HTML5.
                   </video>

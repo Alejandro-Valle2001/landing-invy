@@ -75,11 +75,9 @@ const Hero = () => {
             }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <Button text="Prueba Gratis" />
-            <div className="cursor-pointer hover:underline">
-              Explora la app
-              <FaArrowRight className="h-3 w-3 inline ml-2" />
-            </div>
+            <button className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 hover:from-blue-700 hover:via-purple-700 hover:to-blue-900 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 shadow-lg transform hover:scale-105 hover:shadow-xl border-0">
+              Accede a la Demo
+            </button>
           </motion.div>
         </div>
 

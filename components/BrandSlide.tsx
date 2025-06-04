@@ -1,11 +1,10 @@
 "use client";
 
-import logo_acme from "@/public/assests/logo-acme.png";
-import logo_apex from "@/public/assests/logo-apex.png";
-import logo_celestial from "@/public/assests/logo-celestial.png";
-import logo_echo from "@/public/assests/logo-echo.png";
+import logo_supbase from "@/public/assests/supbase.png";
+import logo_vercel from "@/public/assests/vercel.png";
+import logo_alpha1 from "@/public/assests/alpha1.png";
+import logo_hostinger from "@/public/assests/hostinger.png";
 import logo_pulse from "@/public/assests/logo-pulse.png";
-import logo_quantum from "@/public/assests/logo-quantum.png";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -25,27 +24,29 @@ const BrandSlide = () => {
             repeatType: "loop",
           }}
         >
-          <Image src={logo_acme} alt="logo_acme" className="h-8 w-auto" />
-          <Image src={logo_apex} alt="logo_apex" className="h-8 w-auto" />
-          <Image
-            src={logo_celestial}
-            alt="logo_celestial"
-            className="h-8 w-auto"
-          />
-          <Image src={logo_echo} alt="logo_echo" className="h-8 w-auto" />
+          <Image src={logo_supbase} alt="logo_supbase" className="h-8 w-auto" />
+          <Image src={logo_vercel} alt="logo_vercel" className="h-8 w-auto" />
+          <Image src={logo_alpha1} alt="logo_alpha1" className="h-8 w-auto" />
+          <Image src={logo_hostinger} alt="logo_hostinger" className="h-8 w-auto" />
           <Image src={logo_pulse} alt="logo_pulse" className="h-8 w-auto" />
-          <Image src={logo_quantum} alt="logo_quantum" className="h-8 w-auto" />
 
-          <Image src={logo_acme} alt="logo_acme" className="h-8 w-auto" />
-          <Image src={logo_apex} alt="logo_apex" className="h-8 w-auto" />
-          <Image
-            src={logo_celestial}
-            alt="logo_celestial"
-            className="h-8 w-auto"
-          />
-          <Image src={logo_echo} alt="logo_echo" className="h-8 w-auto" />
+          <Image src={logo_supbase} alt="logo_supbase" className="h-8 w-auto" />
+          <Image src={logo_vercel} alt="logo_vercel" className="h-8 w-auto" />
+          <Image src={logo_alpha1} alt="logo_alpha1" className="h-8 w-auto" />
+          <Image src={logo_hostinger} alt="logo_hostinger" className="h-8 w-auto" />
           <Image src={logo_pulse} alt="logo_pulse" className="h-8 w-auto" />
-          <Image src={logo_quantum} alt="logo_quantum" className="h-8 w-auto" />
+
+          <Image src={logo_supbase} alt="logo_supbase" className="h-8 w-auto" />
+          <Image src={logo_vercel} alt="logo_vercel" className="h-8 w-auto" />
+          <Image src={logo_alpha1} alt="logo_alpha1" className="h-8 w-auto" />
+          <Image src={logo_hostinger} alt="logo_hostinger" className="h-8 w-auto" />
+          <Image src={logo_pulse} alt="logo_pulse" className="h-8 w-auto" />
+
+          <Image src={logo_supbase} alt="logo_supbase" className="h-8 w-auto" />
+          <Image src={logo_vercel} alt="logo_vercel" className="h-8 w-auto" />
+          <Image src={logo_alpha1} alt="logo_alpha1" className="h-8 w-auto" />
+          <Image src={logo_hostinger} alt="logo_hostinger" className="h-8 w-auto" />
+          <Image src={logo_pulse} alt="logo_pulse" className="h-8 w-auto" />
         </motion.div>
       </div>
     </div>

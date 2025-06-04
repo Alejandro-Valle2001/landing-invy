@@ -88,7 +88,7 @@ const Testimonials = () => {
             {testimonial.text}
           </div>
           <div className="flex items-center gap-3">
-            <Image src={testimonial.avatar} alt="Avatar" className="h-12 w-12" />
+            <Image src={testimonial.avatar} alt="Avatar" className="h-12 w-12 rounded-full object-cover" />
             <div>
               <div className="font-semibold">{testimonial.name}</div>
               <div>{testimonial.username}</div>
