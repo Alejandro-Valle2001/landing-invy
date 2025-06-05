@@ -101,9 +101,14 @@ const Pricing = () => {
                   </div>
 
                   {/* Botón de acción principal */}
-                  <button className="bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 hover:from-purple-700 hover:via-purple-800 hover:to-purple-900 text-white font-bold py-4 px-16 rounded-2xl text-lg transition-all duration-300 shadow-lg transform hover:scale-105 hover:shadow-xl border-0 w-fit mx-auto lg:mx-0">
-                    Empezar Ahora
-                  </button>
+                  <a
+                    href="https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=2c938084971ccf8e0197200753c801cb"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="boton-prueba bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 hover:from-purple-700 hover:via-purple-800 hover:to-purple-900 text-white font-bold py-4 px-16 rounded-2xl text-lg transition-all duration-300 shadow-lg transform hover:scale-105 hover:shadow-xl border-0 w-fit mx-auto lg:mx-0 text-center inline-block"
+                  >
+                    Probar Suscripción (S/ 2.00)
+                  </a>
                   
                   <p className="text-gray-400 text-sm mt-4">
                     Sin compromiso • Cancela cuando quieras
