@@ -6,8 +6,6 @@ import { IoMdCheckmark } from "react-icons/io";
 import { useState } from "react";
 
 const Pricing = () => {
-  const [isAnnual, setIsAnnual] = useState(false);
-
   return (
     <div id="precio" className="mb-8">
       <div className="flex flex-col items-center font-medium mt-12 mb-8 px-4 sm:px-8 lg:px-12 mx-auto max-w-[750px]">
@@ -21,48 +19,11 @@ const Pricing = () => {
         <div className="text-center text-base sm:text-lg mb-6 md:text-xl px-4">
         Accede a todas las funciones sin restricciones. Sin letras pequeñas, sin complicaciones. Solo resultados.
         </div>
-
-        {/* Toggle para Mensual/Anual - Diseño compacto */}
-        <div className="relative inline-flex items-center bg-gray-100 rounded-full p-1 mb-4">
-          <button
-            onClick={() => setIsAnnual(false)}
-            className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
-              !isAnnual 
-                ? 'bg-white text-gray-900 shadow-sm' 
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Mensual
-          </button>
-          <button
-            onClick={() => setIsAnnual(true)}
-            className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
-              isAnnual 
-                ? 'bg-white text-gray-900 shadow-sm' 
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Anual
-          </button>
-          {/* Badge de descuento */}
-          <div className="absolute -top-2 -right-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">
-            -25%
-          </div>
-        </div>
       </div>
 
       {/* Plan Pro mejorado y centrado */}
       <div className="flex justify-center pb-16 mt-2 px-4 sm:px-6 lg:px-0">
         <div className="relative w-full max-w-4xl">
-          {/* Badge "Más popular" solo en plan anual - diseño estático */}
-          {isAnnual && (
-            <div className="absolute -top-3 -right-3 z-20">
-              <div className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                Más popular
-              </div>
-            </div>
-          )}
-
           {/* Tarjeta principal con diseño mejorado */}
           <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-800 rounded-3xl p-8 md:p-12 lg:p-16 overflow-hidden shadow-2xl">
             {/* Efectos de fondo mejorados */}
@@ -87,27 +48,22 @@ const Pricing = () => {
                   <div className="mb-6">
                     <div className="flex items-baseline justify-center lg:justify-start gap-2 mb-4">
                       <span className="text-6xl md:text-7xl lg:text-8xl font-black bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-                        S/.{isAnnual ? '142' : '189'}
+                        S/.189
                       </span>
                       <div className="flex flex-col">
                         <span className="text-2xl text-gray-400 font-semibold">/mes</span>
-                        {isAnnual && (
-                          <span className="text-sm text-green-400 font-medium">
-                            Facturado anualmente
-                          </span>
-                        )}
                       </div>
                     </div>
                   </div>
 
                   {/* Botón de acción principal */}
                   <a
-                    href="https://www.mercadopago.com.pe/subscriptions/checkout?preapproval_plan_id=2c938084971ccf8e0197200753c801cb"
+                    href="https://app.invyperu.com/register"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="boton-prueba bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 hover:from-purple-700 hover:via-purple-800 hover:to-purple-900 text-white font-bold py-4 px-16 rounded-2xl text-lg transition-all duration-300 shadow-lg transform hover:scale-105 hover:shadow-xl border-0 w-fit mx-auto lg:mx-0 text-center inline-block"
                   >
-                    Probar Suscripción (S/ 2.00)
+                    Solicitar Ahora
                   </a>
                   
                   <p className="text-gray-400 text-sm mt-4">
