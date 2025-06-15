@@ -58,7 +58,7 @@ const Pricing = () => {
 
                   {/* Botón de acción principal */}
                   <a
-                    href="https://app.invyperu.com/register"
+                    href="https://app.invyperu.com/formulario"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="boton-prueba bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 hover:from-purple-700 hover:via-purple-800 hover:to-purple-900 text-white font-bold py-4 px-16 rounded-2xl text-lg transition-all duration-300 shadow-lg transform hover:scale-105 hover:shadow-xl border-0 w-fit mx-auto lg:mx-0 text-center inline-block"
