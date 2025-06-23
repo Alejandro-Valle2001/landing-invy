@@ -24,7 +24,7 @@ const PoliticasDePrivacidad = () => {
                     I. ALCANCE
                   </h2>
                   <p className="text-gray-700 mb-4">
-                    Esta Política de Privacidad aplica a toda actividad de tratamiento de datos personales realizada por Valbe Technologies S.A.C. (en adelante, "Invy"), identificada con RUC 20614322889, en cumplimiento de la Ley N.º 29733 – Ley de Protección de Datos Personales y su reglamento.
+                    Esta Política de Privacidad aplica a toda actividad de tratamiento de datos personales realizada por Valbe Technologies S.A.C. (en adelante, &quot;Invy&quot;), identificada con RUC 20614322889, en cumplimiento de la Ley N.º 29733 – Ley de Protección de Datos Personales y su reglamento.
                   </p>
                   <p className="text-gray-700">
                     Invy garantiza la confidencialidad, integridad y seguridad de los datos personales que recoge a través de su sitio web, aplicación web y canales asociados.
