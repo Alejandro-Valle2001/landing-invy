@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
+      {
         url: "/assests/faviconcorto.png",
         sizes: "16x16",
         type: "image/png",
@@ -24,7 +28,7 @@ export const metadata: Metadata = {
         type: "image/png",
       },
     ],
-    shortcut: "/assests/faviconcorto.png",
+    shortcut: "/favicon.ico",
     apple: {
       url: "/assests/faviconcorto.png",
       sizes: "180x180",
@@ -41,10 +45,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/assests/faviconcorto.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/assests/faviconcorto.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assests/faviconcorto.png" />
-        <link rel="shortcut icon" href="/assests/faviconcorto.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <meta name="msapplication-TileImage" content="/assests/faviconcorto.png" />
       </head>
       <body className={twMerge(dmSans.className, "antialiased")}>
         <Link href="/demo" className="block bg-black text-white p-3 text-sm text-center cursor-pointer hover:bg-gray-800 transition-colors">
