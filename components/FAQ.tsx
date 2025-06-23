@@ -13,7 +13,7 @@ const FAQ = () => {
     },
     {
       question: "¿Para quién está pensado?",
-      answer: "Está diseñado para pequeñas y medianas empresas que necesitan controlar su inventario, gestionar ventas y tomar decisiones basadas en datos precisos."
+      answer: "Está diseñado para empresas que necesitan controlar su inventario, gestionar ventas y tomar decisiones basadas en datos precisos."
     },
     {
       question: "¿Necesito instalar algo?",
@@ -25,7 +25,7 @@ const FAQ = () => {
     },
     {
       question: "¿Tiene comisiones por ventas?",
-      answer: "No cobramos comisiones por ventas. Solo pagas la suscripción mensual o anual del plan que elijas, sin costos adicionales por transacciones."
+      answer: "No cobramos comisiones por ventas. Solo pagas la suscripción mensual del plan, sin costos adicionales por transacciones."
     },
     {
       question: "¿En qué se diferencia de Excel?",
@@ -33,11 +33,11 @@ const FAQ = () => {
     },
     {
       question: "¿Se puede integrar con mi tienda online?",
-      answer: "Sí, ofrecemos integraciones con las principales plataformas como Shopify, MercadoLibre y Falabella para sincronizar automáticamente tu inventario."
+      answer: "Mas adelante se podrá integrar con las principales plataformas como Shopify, MercadoLibre y Falabella para sincronizar automáticamente tu inventario."
     },
     {
-      question: "¿Puedo invitar a mi equipo?",
-      answer: "Absolutamente. Puedes invitar a tu equipo y asignar diferentes niveles de acceso según las necesidades de cada usuario en tu organización."
+      question: "¿Pueden usarlo mas usuarios?",
+      answer: "Absolutamente, pueden usarlo mas de un usuario."
     }
   ];
 

@@ -30,10 +30,10 @@ const Button = ({ text, className = '', href, onClick }: ButtonProps) => {
     );
   }
 
-  // Por defecto, si es "Prueba Gratis", navegar a la página correspondiente
-  if (text === "Prueba Gratis") {
+  // Por defecto, si es "Prueba Gratis" o "Probar Demo", navegar a la página correspondiente
+  if (text === "Prueba Gratis" || text === "Probar Demo") {
     return (
-      <Link href="/prueba-gratis" className={buttonClasses}>
+      <Link href="/demo" className={buttonClasses}>
         {text}
       </Link>
     );

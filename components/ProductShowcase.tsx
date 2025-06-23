@@ -5,6 +5,7 @@ import Pyramid from "@/public/assests/pyramid.png";
 import Tube from "@/public/assests/tube.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { GoBell, GoGoal } from "react-icons/go";
@@ -54,7 +55,7 @@ const ProductShowcase = () => {
   return (
     <div
       ref={sectionRef}
-      className="bg-gradient-to-t from-[#acbae8] to-white flex flex-col items-center overflow-x-hidden pb-24"
+      className="bg-white flex flex-col items-center overflow-x-hidden pb-24"
     >
       {/* Sección de Estadísticas Rediseñada */}
       <div ref={statsRef} className="w-full max-w-6xl mx-auto mt-20 mb-12 px-4 sm:px-6">
@@ -72,7 +73,8 @@ const ProductShowcase = () => {
         </div>
 
         {/* Grid de estadísticas simplificado y elegante */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="bg-gray-100 p-8 rounded-2xl shadow-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Estadística 1 */}
           <div className="text-center">
             <div className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text mb-2">
@@ -142,6 +144,7 @@ const ProductShowcase = () => {
           </div>
         </div>
       </div>
+      </div>
 
       <div className="flex flex-col items-center font-medium mt-24 px-8 mx-auto md:w-[550px] lg:w-[630px]">
         <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80">
@@ -155,6 +158,15 @@ const ProductShowcase = () => {
         <div className="text-center text-lg mb-8 md:text-xl">
         Controla tus productos, pedidos y reportes desde un panel intuitivo, en tiempo real y sin necesidad de instalaciones. 
         </div>
+        
+        {/* Botón Ver más características */}
+        <div className="text-center mb-12">
+          <Link href="/caracteristicas">
+            <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              Ver más características
+            </button>
+          </Link>
+        </div>
       </div>
       <div className="relative ">
         <motion.img
@@ -163,6 +175,22 @@ const ProductShowcase = () => {
           className="absolute -right-24 -top-20 w-72 h-72 hidden md:block"
           style={{
             translateY: translateY,
+          }}
+          animate={{
+            y: [0, -15, 0],
+            rotate: [0, 2, 0]
+          }}
+          transition={{
+            y: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            },
+            rotate: {
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
           }}
         />
         <Image 
@@ -179,42 +207,25 @@ const ProductShowcase = () => {
           style={{
             translateY: translateY,
           }}
+          animate={{
+            y: [0, 20, 0],
+            rotate: [0, -3, 0]
+          }}
+          transition={{
+            y: {
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            },
+            rotate: {
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
+          }}
         />
       </div>
 
-      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-20 max-w-[1400px] lg:px-28">
-        <div className="mt-16">
-          <LuLeaf className="text-2xl mb-3" />
-          <div className="font-bold text-2xl">Gestión centralizada</div>
-          <div className="text-lg my-2">
-          Administra productos, pedidos y reportes desde un solo lugar, en tiempo real.
-          </div>
-        </div>
-
-        <div className="mt-16">
-          <GoGoal className="text-2xl mb-3" />
-          <div className="font-bold text-2xl">Control total de stock</div>
-          <div className="text-lg my-2">
-          Visualiza y actualiza tu inventario sin errores ni duplicados.
-          </div>
-        </div>
-
-        <div className="mt-16">
-          <MdLockOutline className="text-2xl mb-3" />
-          <div className="font-bold text-2xl">Seguridad de datos</div>
-          <div className="text-lg my-2">
-          Tu información protegida con cifrado y respaldos automáticos.
-          </div>
-        </div>
-
-        <div className="mt-16">
-          <GoBell className="text-2xl mb-3" />
-          <div className="font-bold text-2xl">Alertas inteligentes</div>
-          <div className="text-lg my-2">
-          Recibe notificaciones sobre nuevos pedidos, productos en stock mínimo y actividad reciente.
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

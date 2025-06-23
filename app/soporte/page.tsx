@@ -186,7 +186,7 @@ const SoportePage = () => {
           <div className="text-center mt-12">
             <p className="text-gray-600 mb-4">¿No encontraste lo que buscabas?</p>
             <Link
-              href="/prueba-gratis"
+              href="/demo"
               className="inline-flex items-center bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors duration-300"
             >
               Contáctanos directamente

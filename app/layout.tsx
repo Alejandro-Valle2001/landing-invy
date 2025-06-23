@@ -9,8 +9,28 @@ import Link from "next/link";
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Landing Page",
-  description: "Landing Page",
+  title: "Invy Perú",
+  description: "Invy Perú - Sistema de Gestión de Inventario",
+  icons: {
+    icon: [
+      {
+        url: "/assests/faviconcorto.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "/assests/faviconcorto.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+    shortcut: "/assests/faviconcorto.png",
+    apple: {
+      url: "/assests/faviconcorto.png",
+      sizes: "180x180",
+      type: "image/png",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -20,8 +40,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" sizes="16x16" href="/assests/faviconcorto.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/assests/faviconcorto.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/assests/faviconcorto.png" />
+        <link rel="shortcut icon" href="/assests/faviconcorto.png" />
+      </head>
       <body className={twMerge(dmSans.className, "antialiased")}>
-        <Link href="/prueba-gratis" className="block bg-black text-white p-3 text-sm text-center cursor-pointer hover:bg-gray-800 transition-colors">
+        <Link href="/demo" className="block bg-black text-white p-3 text-sm text-center cursor-pointer hover:bg-gray-800 transition-colors">
           <span className="hidden sm:inline pr-2 opacity-80">
             Simplifica tu gestión y haz más en menos tiempo.
           </span>

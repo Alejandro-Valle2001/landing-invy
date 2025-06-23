@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Logo from "@/public/assests/fotologo.png";
 import {
   FaFacebook,
@@ -45,11 +46,18 @@ const Footer = () => {
       {/* Sección de Recursos */}
       <div className="flex flex-col gap-4">
         <div className="font-bold text-lg text-white">Recursos</div>
-        <div className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">· Integraciones</div>
-        <div className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">· Manuales</div>
-        <div className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">· Condiciones de uso</div>
-        <div className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">· Política de privacidad</div>
-        <div className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">· Libro de reclamaciones</div>
+        <Link href="/manuales" className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">
+          · Manuales
+        </Link>
+        <Link href="/condiciones-de-uso" className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">
+          · Condiciones de uso
+        </Link>
+        <Link href="/politicas-de-privacidad" className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">
+          · Política de privacidad
+        </Link>
+        <a href="https://librovirtual.pe/r/valbe-technologies-sac" target="_blank" rel="noopener noreferrer" className="cursor-pointer text-gray-300/85 hover:text-white transition-colors">
+          · Libro de reclamaciones
+        </a>
       </div>
 
       {/* Sección de Contacto */}
@@ -58,7 +66,7 @@ const Footer = () => {
         <div className="flex items-center gap-3 text-gray-300/85">
           <FaEnvelope className="text-blue-400" />
           <a href="mailto:valbelperu@gmail.com" className="hover:text-white transition-colors">
-            valbelperu@gmail.com
+            valbeperu@gmail.com
           </a>
         </div>
         <div className="flex items-center gap-3 text-gray-300/85">

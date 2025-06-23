@@ -1,11 +1,11 @@
-import Helix from "@/public/assests/cube-helix 1.png";
-import Cube from "@/public/assests/cube-helix.png";
+import Centro from "@/public/assests/centro.png";
+import Metas from "@/public/assests/metas.png";
 import Image from "next/image";
 
 const ProductCard = () => {
   return (
     <div id="beneficios" className="pb-28 flex flex-col items-center">
-      <div className="flex flex-col items-center justify-center pt-28 px-12 pb-10 md:w-[600px]">
+      <div className="flex flex-col items-center justify-center pt-28 px-12 pb-4 md:w-[600px]">
         <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80">
           Olvidate de usar Excel
         </div>
@@ -13,16 +13,16 @@ const ProductCard = () => {
         Convierte números en decisiones
         </div>
 
-        <div className="text-center text-lg mb-8 md:text-xl">
+        <div className="text-center text-lg mb-4 md:text-xl">
         Visualiza tus ventas, márgenes y pedidos en tiempo real con reportes claros y accionables.
 
 
         </div>
       </div>
 
-      <div className="flex flex-col gap-16 pt-4 lg:flex-row justify-center items-center px-8">
+      <div className="flex flex-col gap-16 lg:flex-row justify-center items-center px-8">
         <div className="shadow-2xl rounded-xl flex justify-center items-center flex-col p-8 max-w-[400px]">
-          <Image src={Helix} alt="Helix" className="pb-4" />
+          <Image src={Centro} alt="Centro de control" className="pb-4" />
           <div className="text-2xl font-bold pb-3 text-center">
           Tu centro de control
           </div>
@@ -32,7 +32,7 @@ const ProductCard = () => {
         </div>
 
         <div className="shadow-2xl rounded-xl flex justify-center items-center flex-col p-8 max-w-[400px]">
-          <Image src={Cube} alt="Cube" className="pb-4" />
+          <Image src={Metas} alt="Metas claras, control real" className="pb-4" />
           <div className="text-2xl font-bold pb-3 text-center">
           Metas claras, control real
 

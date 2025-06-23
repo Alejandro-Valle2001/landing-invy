@@ -31,6 +31,28 @@ const CTA = () => {
           style={{
             translateY: translateY,
           }}
+          animate={{
+            y: [0, -12, 0],
+            rotate: [0, 5, 0],
+            scale: [1, 1.05, 1]
+          }}
+          transition={{
+            y: {
+              duration: 3.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            },
+            rotate: {
+              duration: 4.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            },
+            scale: {
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
+          }}
         />
         <motion.img
           src={Helix.src}
@@ -38,6 +60,28 @@ const CTA = () => {
           className="absolute -right-80 -top-6 hidden md:block"
           style={{
             translateY: translateY,
+          }}
+          animate={{
+            y: [0, 18, 0],
+            rotate: [0, -4, 0],
+            scale: [1, 0.95, 1]
+          }}
+          transition={{
+            y: {
+              duration: 4.8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            },
+            rotate: {
+              duration: 5.2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            },
+            scale: {
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
           }}
         />
         <div className="text-4xl md:text-5xl lg:text-6xl py-6 font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text">

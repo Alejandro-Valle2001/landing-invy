@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Pricing from "@/components/Pricing";
-import ProductCard from "@/components/ProductCard";
+
 import ProductShowcase from "@/components/ProductShowcase";
 import Testimonials from "@/components/Testimonials";
 
@@ -47,11 +47,10 @@ export default function Home() {
     <div>
       <Header />
       <Hero/>
-      <BrandSlide/>
+      {/* <BrandSlide/> */}
       <ProductShowcase/>
-      <ProductCard/>
-      <Pricing/>
       <Client/>
+      <Pricing/>
       <Testimonials/>
       <CTA/>
       <FAQ/>
