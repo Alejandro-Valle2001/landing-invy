@@ -110,7 +110,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <a href="/demo" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-2">
+              <a href="https://app.invyperu.com/demo" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-2">
                 Probar gratis
                 <FaArrowRight className="text-sm" />
               </a>
@@ -235,7 +235,7 @@ const Hero = () => {
                     Ver casos de éxito
                   </button>
                   
-                  <a href="/demo" className="group bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2">
+                  <a href="https://app.invyperu.com/demo" target="_blank" rel="noopener noreferrer" className="group bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2">
                     Probar gratis
                     <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
                   </a>

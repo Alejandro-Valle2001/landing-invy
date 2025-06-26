@@ -93,11 +93,23 @@ const CTA = () => {
         </div>
 
         <div className="flex items-center gap-4 mt-4 text-lg">
-          <Button text="Prueba Gratis" />
-          <div className="font-semibold cursor-pointer  hover:underline">
+          <a 
+            href="https://app.invyperu.com/demo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white bg-black py-2 px-3 rounded-lg cursor-pointer hover:bg-gray-800 transition-colors"
+          >
+            Prueba Gratis
+          </a>
+          <a 
+            href="https://app.invyperu.com/formulario"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold cursor-pointer hover:underline"
+          >
             Solicita ahora
             <FaArrowRight className="h-3 w-3 inline ml-2" />
-          </div>
+          </a>
         </div>
       </div>
     </div>

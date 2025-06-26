@@ -117,7 +117,14 @@ const Header = () => {
             >
               Iniciar Sesión
             </a>
-            <Button text="Probar Demo" className="w-full md:w-auto max-w-xs" />
+            <a 
+              href="https://app.invyperu.com/demo" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white bg-black py-2 px-3 rounded-lg cursor-pointer hover:bg-gray-800 transition-colors font-medium text-center inline-block"
+            >
+              Probar Demo
+            </a>
           </li>
         </ul>
       </nav>

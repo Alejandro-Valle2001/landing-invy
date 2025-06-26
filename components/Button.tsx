@@ -30,12 +30,17 @@ const Button = ({ text, className = '', href, onClick }: ButtonProps) => {
     );
   }
 
-  // Por defecto, si es "Prueba Gratis" o "Probar Demo", navegar a la página correspondiente
+  // Por defecto, si es "Prueba Gratis" o "Probar Demo", navegar a la URL externa
   if (text === "Prueba Gratis" || text === "Probar Demo") {
     return (
-      <Link href="/demo" className={buttonClasses}>
+      <a 
+        href="https://app.invyperu.com/demo"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={buttonClasses}
+      >
         {text}
-      </Link>
+      </a>
     );
   }
 

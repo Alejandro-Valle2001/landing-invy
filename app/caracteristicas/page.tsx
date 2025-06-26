@@ -354,9 +354,14 @@ export default function Caracteristicas() {
             transition={{ duration: 0.8, delay: 1 }}
             className="text-center"
           >
-              <Link href="/demo" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mr-4">
-              Comenzar prueba gratuita
-            </Link>
+              <a 
+                href="https://app.invyperu.com/demo" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mr-4"
+              >
+              Probar la demo gratuita
+            </a>
             <Link href="/soporte" className="inline-block border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300">
               Hablar con un experto
             </Link>
@@ -604,9 +609,14 @@ export default function Caracteristicas() {
             Únete a más de 500 empresas que ya optimizaron su gestión de inventario
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                          <Link href="/demo" className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
-              Comenzar prueba gratuita
-            </Link>
+                          <a 
+              href="https://app.invyperu.com/demo" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors"
+            >
+              Probar la demo gratuita
+            </a>
             <Link href="/soporte" className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-colors">
               Hablar con un experto
             </Link>

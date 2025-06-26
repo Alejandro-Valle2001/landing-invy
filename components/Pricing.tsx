@@ -57,7 +57,9 @@ const Pricing = () => {
               </div>
               
               <a
-                href="/demo"
+                href="https://app.invyperu.com/demo"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full bg-white text-blue-600 font-bold py-4 px-6 rounded-xl hover:bg-blue-50 transition-colors duration-300 flex items-center justify-center gap-2 group"
               >
                 Solicitar demo
