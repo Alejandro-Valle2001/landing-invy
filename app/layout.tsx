@@ -24,14 +24,19 @@ export default function RootLayout({
       <head>
       </head>
       <body className={twMerge(dmSans.className, "antialiased")}>
-        <Link href="/demo" className="block bg-black text-white p-3 text-sm text-center cursor-pointer hover:bg-gray-800 transition-colors">
+        <a 
+          href="https://app.invyperu.com/demo" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="block bg-black text-white p-3 text-sm text-center cursor-pointer hover:bg-gray-800 transition-colors"
+        >
           <span className="hidden sm:inline pr-2 opacity-80">
             Simplifica tu gestión y haz más en menos tiempo.
           </span>
           <span className="pr-1">
             Comienza gratis ahora <FaArrowRight className="inline h-2 w-2" />
           </span>
-        </Link>
+        </a>
         {children}
         <WhatsAppButton />
       </body>
