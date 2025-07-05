@@ -44,13 +44,18 @@ const Client = () => {
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting && index === currentIndex) {
-                video.play().catch(console.error);
-              } else {
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                  playPromise.catch((error) => {
+                    console.log('Error en Intersection Observer:', error);
+                  });
+                }
+              } else if (!entry.isIntersecting) {
                 video.pause();
               }
             });
           },
-          { threshold: 0.5 }
+          { threshold: 0.3 }
         );
         observer.observe(video);
         observers.push(observer);
@@ -68,13 +73,39 @@ const Client = () => {
       if (video) {
         if (index === currentIndex) {
           video.currentTime = 0;
-          video.play().catch(console.error);
+          // Intentar reproducir con manejo de errores mejorado
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+              console.log('Error al reproducir video:', error);
+              // Si falla el autoplay, al menos asegurar que esté listo
+              video.load();
+            });
+          }
         } else {
           video.pause();
         }
       }
     });
   }, [currentIndex]);
+
+  // Reproducir el primer video al montar el componente
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const firstVideo = videoRefs.current[0];
+      if (firstVideo) {
+        firstVideo.currentTime = 0;
+        const playPromise = firstVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            console.log('Error al reproducir primer video:', error);
+          });
+        }
+      }
+    }, 500); // Pequeño delay para asegurar que el video esté cargado
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % clients.length);
@@ -89,167 +120,380 @@ const Client = () => {
   };
 
   return (
-    <section id="testimonios" className="min-h-screen flex flex-col justify-center py-6 sm:py-8 px-4 sm:px-6 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto w-full">
+    <section id="testimonios" className="py-12 md:py-16 lg:py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-6 sm:mb-8">
-          <div className="border-2 w-fit p-0.5 px-3 text-xs sm:text-sm rounded-xl border-slate-300/80 mx-auto mb-3 sm:mb-4">
-          Ellos ya lo usan
+        <div className="text-center mb-12 md:mb-16">
+          <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80 mx-auto mb-4">
+            Ellos ya lo usan
           </div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text mb-3 sm:mb-4 px-4">
-          Transformando negocios reales
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text mb-4">
+            Transformando negocios reales
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-4">
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
             Descubre cómo empresas como la tuya han transformado su gestión de inventario con nuestra plataforma.
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="relative flex-1 flex items-center">
-          <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12 w-full">
-            
-            {/* Video Section */}
-            <div className="w-full lg:w-1/2 relative">
-              <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md h-[400px] sm:h-[500px] lg:h-[550px] mx-auto bg-black rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl">
-                {clients.map((client, index) => (
-                  <video
-                    key={index}
-                    ref={(el) => {
-                      videoRefs.current[index] = el;
-                    }}
-                    className={`absolute inset-0 w-full h-full object-cover object-center scale-105 transition-opacity duration-500 ${
-                      index === currentIndex ? 'opacity-100' : 'opacity-0'
-                    }`}
-                    style={{ minHeight: '500px' }}
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
+        <div className="space-y-8 md:space-y-0">
+          
+          {/* Mobile Layout */}
+          <div className="block md:hidden">
+            <div className="space-y-6">
+              
+                             {/* Video Container - Mobile */}
+               <div className="relative w-full max-w-sm mx-auto">
+                 <div className="relative w-full h-[500px] bg-black rounded-2xl overflow-hidden shadow-2xl">
+                   {clients.map((client, index) => (
+                     <video
+                       key={index}
+                       ref={(el) => {
+                         videoRefs.current[index] = el;
+                       }}
+                       className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 cursor-pointer ${
+                         index === currentIndex ? 'opacity-100' : 'opacity-0'
+                       }`}
+                       muted
+                       loop
+                       playsInline
+                       autoPlay={index === currentIndex}
+                       preload="metadata"
+                       onClick={() => {
+                         const video = videoRefs.current[index];
+                         if (video && index === currentIndex) {
+                           if (video.paused) {
+                             video.play().catch(console.error);
+                           } else {
+                             video.pause();
+                           }
+                         }
+                       }}
+                     >
+                       <source src={client.video} type="video/mp4" />
+                       Tu navegador no soporta videos HTML5.
+                     </video>
+                   ))}
+                  
+                                     {/* Video Overlay */}
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                   
+                   {/* Play Button Overlay - Mobile */}
+                   <div className="absolute inset-0 flex items-center justify-center">
+                     <button
+                       onClick={() => {
+                         const video = videoRefs.current[currentIndex];
+                         if (video) {
+                           if (video.paused) {
+                             video.play().catch(console.error);
+                           } else {
+                             video.pause();
+                           }
+                         }
+                       }}
+                       className="bg-white/20 backdrop-blur-sm text-white p-4 rounded-full hover:bg-white/30 transition-all duration-300 opacity-0 hover:opacity-100"
+                       aria-label="Reproducir/Pausar video"
+                     >
+                       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                         <path d="M8 5v14l11-7z"/>
+                       </svg>
+                     </button>
+                   </div>
+                   
+                   {/* Navigation Arrows */}
+                   <button
+                     onClick={prevSlide}
+                     className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
+                     aria-label="Video anterior"
+                   >
+                     <FaChevronLeft size={16} />
+                   </button>
+                  <button
+                    onClick={nextSlide}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 z-10"
+                    aria-label="Siguiente video"
                   >
-                    <source src={client.video} type="video/mp4" />
-                    Tu navegador no soporta videos HTML5.
-                  </video>
-                ))}
-                
-                {/* Video Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                
-                {/* Navigation Arrows */}
-                <button
-                  onClick={prevSlide}
-                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 sm:p-3 rounded-full hover:bg-white/30 transition-all duration-300"
-                  aria-label="Video anterior"
-                >
-                  <FaChevronLeft size={14} />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 sm:p-3 rounded-full hover:bg-white/30 transition-all duration-300"
-                  aria-label="Siguiente video"
-                >
-                  <FaChevronRight size={14} />
-                </button>
+                    <FaChevronRight size={16} />
+                  </button>
+                </div>
               </div>
-            </div>
 
-            {/* Content Section */}
-            <div className="w-full lg:w-1/2 text-center lg:text-left px-4 lg:px-0">
-              <div className="relative min-h-[250px] lg:min-h-[300px]">
-                {clients.map((client, index) => (
-                  <div
+              {/* Dots Navigation - Mobile */}
+              <div className="flex justify-center gap-2 py-2">
+                {clients.map((_, index) => (
+                  <button
                     key={index}
-                    className={`transition-all duration-500 ${
+                    onClick={() => goToSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       index === currentIndex 
-                        ? 'opacity-100 translate-x-0' 
-                        : 'opacity-0 translate-x-8 absolute inset-0 pointer-events-none'
+                        ? 'bg-blue-600 w-8' 
+                        : 'bg-gray-300 hover:bg-gray-400'
                     }`}
-                  >
-                    {/* Quote */}
-                    <div className="text-2xl sm:text-3xl lg:text-4xl text-blue-300 mb-2 lg:mb-3 font-serif leading-none">&quot;</div>
-                    <blockquote className="text-sm sm:text-base lg:text-lg text-gray-700 mb-3 lg:mb-4 leading-relaxed italic">
-                      {client.testimonial}
-                    </blockquote>
-                    
-                    {/* Client Info & Social Links - Todo junto */}
-                    <div className="space-y-1 lg:space-y-2">
-                      <h3 className="text-base sm:text-lg font-bold text-gray-900">
-                        {client.name}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-blue-600 font-medium">
-                        {client.position}
-                      </p>
-                      <p className="text-xs sm:text-sm text-gray-600 mb-2 lg:mb-3">
-                        {client.company}
-                      </p>
+                    aria-label={`Ir al testimonio ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Content Section - Mobile */}
+              <div className="text-center px-4">
+                <div className="relative min-h-[280px]">
+                  {clients.map((client, index) => (
+                    <div
+                      key={index}
+                      className={`transition-all duration-500 ${
+                        index === currentIndex 
+                          ? 'opacity-100 translate-y-0' 
+                          : 'opacity-0 translate-y-4 absolute inset-0 pointer-events-none'
+                      }`}
+                    >
+                                             <blockquote className="text-base text-gray-700 mb-6 leading-relaxed italic max-w-sm mx-auto">
+                         {client.testimonial}
+                       </blockquote>
                       
-                      {/* Social Links integrados */}
-                      <div className="flex gap-2 sm:gap-3 justify-center lg:justify-start">
-                        {client.social.facebook && (
-                          <a 
-                            href={client.social.facebook} 
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors"
-                            aria-label="Facebook"
-                          >
-                            <FaFacebook size={16} />
-                          </a>
-                        )}
-                        {client.social.tiktok && (
-                          <a 
-                            href={client.social.tiktok} 
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-black text-white p-2 rounded-full hover:bg-gray-800 transition-colors"
-                            aria-label="TikTok"
-                          >
-                            <FaTiktok size={16} />
-                          </a>
-                        )}
-                        {client.social.whatsapp && client.social.whatsapp !== "#" && (
-                          <a 
-                            href={client.social.whatsapp} 
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-green-500 text-white p-2 rounded-full hover:bg-green-600 transition-colors"
-                            aria-label="WhatsApp"
-                          >
-                            <FaWhatsapp size={16} />
-                          </a>
-                        )}
-                        {client.social.instagram && client.social.instagram !== "#" && (
-                          <a 
-                            href={client.social.instagram} 
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors"
-                            aria-label="Instagram"
-                          >
-                            <FaInstagram size={16} />
-                          </a>
-                        )}
+                      {/* Client Info */}
+                      <div className="space-y-2">
+                        <h3 className="text-lg font-bold text-gray-900">
+                          {client.name}
+                        </h3>
+                        <p className="text-sm text-blue-600 font-medium">
+                          {client.position}
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          {client.company}
+                        </p>
+                        
+                        {/* Social Links */}
+                        <div className="flex gap-3 justify-center pt-3">
+                          {client.social.facebook && (
+                            <a 
+                              href={client.social.facebook} 
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors"
+                              aria-label="Facebook"
+                            >
+                              <FaFacebook size={16} />
+                            </a>
+                          )}
+                          {client.social.tiktok && (
+                            <a 
+                              href={client.social.tiktok} 
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-black text-white p-2 rounded-full hover:bg-gray-800 transition-colors"
+                              aria-label="TikTok"
+                            >
+                              <FaTiktok size={16} />
+                            </a>
+                          )}
+                          {client.social.whatsapp && client.social.whatsapp !== "#" && (
+                            <a 
+                              href={client.social.whatsapp} 
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-green-500 text-white p-2 rounded-full hover:bg-green-600 transition-colors"
+                              aria-label="WhatsApp"
+                            >
+                              <FaWhatsapp size={16} />
+                            </a>
+                          )}
+                          {client.social.instagram && client.social.instagram !== "#" && (
+                            <a 
+                              href={client.social.instagram} 
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors"
+                              aria-label="Instagram"
+                            >
+                              <FaInstagram size={16} />
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Dots Navigation */}
-          <div className="flex justify-center mt-4 sm:mt-6 gap-2">
-            {clients.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-blue-600 w-6 sm:w-8' 
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-                aria-label={`Ir al testimonio ${index + 1}`}
-              />
-            ))}
+          {/* Desktop Layout */}
+          <div className="hidden md:block">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              
+                             {/* Video Section - Desktop */}
+               <div className="relative">
+                 <div className="relative w-full max-w-md h-[550px] mx-auto bg-black rounded-3xl overflow-hidden shadow-2xl">
+                   {clients.map((client, index) => (
+                     <video
+                       key={index}
+                       ref={(el) => {
+                         videoRefs.current[index] = el;
+                       }}
+                       className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 cursor-pointer ${
+                         index === currentIndex ? 'opacity-100' : 'opacity-0'
+                       }`}
+                       muted
+                       loop
+                       playsInline
+                       autoPlay={index === currentIndex}
+                       preload="metadata"
+                       onClick={() => {
+                         const video = videoRefs.current[index];
+                         if (video && index === currentIndex) {
+                           if (video.paused) {
+                             video.play().catch(console.error);
+                           } else {
+                             video.pause();
+                           }
+                         }
+                       }}
+                     >
+                       <source src={client.video} type="video/mp4" />
+                       Tu navegador no soporta videos HTML5.
+                     </video>
+                   ))}
+                  
+                                     {/* Video Overlay */}
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                   
+                   {/* Play Button Overlay - Desktop */}
+                   <div className="absolute inset-0 flex items-center justify-center">
+                     <button
+                       onClick={() => {
+                         const video = videoRefs.current[currentIndex];
+                         if (video) {
+                           if (video.paused) {
+                             video.play().catch(console.error);
+                           } else {
+                             video.pause();
+                           }
+                         }
+                       }}
+                       className="bg-white/20 backdrop-blur-sm text-white p-4 rounded-full hover:bg-white/30 transition-all duration-300 opacity-0 hover:opacity-100"
+                       aria-label="Reproducir/Pausar video"
+                     >
+                       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                         <path d="M8 5v14l11-7z"/>
+                       </svg>
+                     </button>
+                   </div>
+                   
+                   {/* Navigation Arrows */}
+                   <button
+                     onClick={prevSlide}
+                     className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300"
+                     aria-label="Video anterior"
+                   >
+                     <FaChevronLeft size={16} />
+                   </button>
+                  <button
+                    onClick={nextSlide}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300"
+                    aria-label="Siguiente video"
+                  >
+                    <FaChevronRight size={16} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Content Section - Desktop */}
+              <div className="text-left">
+                <div className="relative min-h-[400px]">
+                  {clients.map((client, index) => (
+                    <div
+                      key={index}
+                      className={`transition-all duration-500 ${
+                        index === currentIndex 
+                          ? 'opacity-100 translate-x-0' 
+                          : 'opacity-0 translate-x-8 absolute inset-0 pointer-events-none'
+                      }`}
+                    >
+                                             <blockquote className="text-lg text-gray-700 mb-6 leading-relaxed italic">
+                         {client.testimonial}
+                       </blockquote>
+                      
+                      {/* Client Info */}
+                      <div className="space-y-2">
+                        <h3 className="text-xl font-bold text-gray-900">
+                          {client.name}
+                        </h3>
+                        <p className="text-base text-blue-600 font-medium">
+                          {client.position}
+                        </p>
+                        <p className="text-base text-gray-600">
+                          {client.company}
+                        </p>
+                        
+                        {/* Social Links */}
+                        <div className="flex gap-3 pt-4">
+                          {client.social.facebook && (
+                            <a 
+                              href={client.social.facebook} 
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors"
+                              aria-label="Facebook"
+                            >
+                              <FaFacebook size={16} />
+                            </a>
+                          )}
+                          {client.social.tiktok && (
+                            <a 
+                              href={client.social.tiktok} 
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-black text-white p-2 rounded-full hover:bg-gray-800 transition-colors"
+                              aria-label="TikTok"
+                            >
+                              <FaTiktok size={16} />
+                            </a>
+                          )}
+                          {client.social.whatsapp && client.social.whatsapp !== "#" && (
+                            <a 
+                              href={client.social.whatsapp} 
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-green-500 text-white p-2 rounded-full hover:bg-green-600 transition-colors"
+                              aria-label="WhatsApp"
+                            >
+                              <FaWhatsapp size={16} />
+                            </a>
+                          )}
+                          {client.social.instagram && client.social.instagram !== "#" && (
+                            <a 
+                              href={client.social.instagram} 
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded-full hover:from-purple-600 hover:to-pink-600 transition-colors"
+                              aria-label="Instagram"
+                            >
+                              <FaInstagram size={16} />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Dots Navigation - Desktop */}
+            <div className="flex justify-center mt-8 gap-2">
+              {clients.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? 'bg-blue-600 w-8' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  aria-label={`Ir al testimonio ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

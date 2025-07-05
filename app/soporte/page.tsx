@@ -185,13 +185,15 @@ const SoportePage = () => {
 
           <div className="text-center mt-12">
             <p className="text-gray-600 mb-4">¿No encontraste lo que buscabas?</p>
-            <Link
-              href="/demo"
+            <a
+              href="https://api.whatsapp.com/send/?phone=51977739546&text=%C2%A1Hola%21+Me+interesa+conocer+m%C3%A1s+sobre+Invy+%EF%BF%BD&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors duration-300"
             >
               Contáctanos directamente
               <FaArrowRight className="ml-2" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>

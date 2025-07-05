@@ -8,6 +8,7 @@ import MetaImage from "@/public/assests/meta.jpg";
 import AgurtoImage from "@/public/assests/agurto.jpg";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
+import { Button as MovingBorderButton } from "@/components/ui/moving-border";
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -55,7 +56,7 @@ const Hero = () => {
                 />
               </div>
                                            <span className="text-sm font-semibold text-gray-800 uppercase tracking-wide">
-                <span className="font-bold text-gray-900">611</span> EMPRESAS YA AUMENTARON SUS VENTAS
+                <span className="font-bold text-gray-900">611</span> EMPRESAS YA LO USAN
               </span>
              </motion.div>
 
@@ -89,12 +90,7 @@ const Hero = () => {
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8, delay: 0.6 }}
              >
-               <p className="text-sm text-gray-600 leading-relaxed">
-                 ❌ Sin stock = ventas perdidas
-               </p>
-               <p className="text-sm text-gray-600 leading-relaxed">
-                 ❌ Exceso de stock = dinero atrapado
-               </p>
+
                <p className="text-sm text-gray-800 leading-relaxed font-semibold">
                  ✅ Stock inteligente = más ganancias
                </p>
@@ -110,10 +106,20 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <a href="https://app.invyperu.com/demo" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-2">
-                Probar gratis
-                <FaArrowRight className="text-sm" />
-              </a>
+              <MovingBorderButton
+                borderRadius="1rem"
+                as="a"
+                href="https://app.invyperu.com/demo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
+                containerClassName="w-full h-auto"
+                borderClassName="h-20 w-20 bg-[radial-gradient(#3b82f6_60%,transparent_40%)] opacity-[1]"
+              >
+                <div className="flex items-center justify-center py-3 px-6">
+                  Prueba Gratuita
+                </div>
+              </MovingBorderButton>
               
               <button 
                 onClick={() => {
@@ -168,7 +174,7 @@ const Hero = () => {
                     />
                   </div>
                   <span className="text-base font-semibold text-gray-800 uppercase tracking-wide">
-                    <span className="font-bold text-gray-900">611</span> EMPRESAS YA AUMENTARON SUS VENTAS
+                    <span className="font-bold text-gray-900">611</span> EMPRESAS YA LO USAN
                   </span>
                 </motion.div>
 
@@ -235,10 +241,20 @@ const Hero = () => {
                     Ver casos de éxito
                   </button>
                   
-                  <a href="https://app.invyperu.com/demo" target="_blank" rel="noopener noreferrer" className="group bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2">
-                    Probar gratis
-                    <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
-                  </a>
+                                    <MovingBorderButton
+                    borderRadius="1rem"
+                    as="a"
+                    href="https://app.invyperu.com/demo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
+                    containerClassName="w-auto h-auto"
+                    borderClassName="h-20 w-20 bg-[radial-gradient(#3b82f6_60%,transparent_40%)] opacity-[1]"
+                  >
+                    <div className="flex items-center justify-center py-3 px-6">
+                      Prueba Gratuita
+                    </div>
+                  </MovingBorderButton>
                 </motion.div>
               </div>
             </div>

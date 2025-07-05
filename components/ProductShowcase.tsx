@@ -1,6 +1,6 @@
 "use client";
 
-import DashboardImage from "@/public/assests/dashseparado.png";
+import DashboardImage from "@/public/assests/appinvy.png";
 import Pyramid from "@/public/assests/pyramid.png";
 import Tube from "@/public/assests/tube.png";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -12,6 +12,7 @@ import { GoBell, GoGoal } from "react-icons/go";
 import { LuLeaf } from "react-icons/lu";
 import { MdLockOutline } from "react-icons/md";
 import CountUp from "react-countup";
+import { Button as MovingBorderButton } from "@/components/ui/moving-border";
 
 const ProductShowcase = () => {
   const sectionRef = useRef(null);
@@ -60,14 +61,14 @@ const ProductShowcase = () => {
       {/* Sección de Estadísticas Rediseñada */}
       <div ref={statsRef} className="w-full max-w-6xl mx-auto mt-20 mb-12 px-4 sm:px-6">
         {/* Header de la sección con estilo consistente */}
-        <div className="flex flex-col items-center font-medium mb-12 px-8 mx-auto md:w-[550px] lg:w-[630px]">
+        <div className="flex flex-col items-center font-medium mb-6 px-8 mx-auto md:w-[550px] lg:w-[630px]">
           <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80">
             Números que hablan por sí solos
           </div>
           <div className="text-3xl md:text-4xl lg:text-5xl py-6 font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text">
             Más de 500 usuarios confían en Invy
           </div>
-          <div className="text-center text-lg mb-8 md:text-xl">
+          <div className="text-center text-lg mb-2 md:text-xl">
             Únete a cientos de empresas que ya optimizaron su gestión de inventario
           </div>
         </div>
@@ -162,9 +163,17 @@ const ProductShowcase = () => {
         {/* Botón Ver más características */}
         <div className="text-center mb-12">
           <Link href="/caracteristicas">
-            <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-              Ver más características
-            </button>
+            <MovingBorderButton
+              borderRadius="1rem"
+              as="button"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
+              containerClassName="w-auto h-auto"
+              borderClassName="h-20 w-20 bg-[radial-gradient(#3b82f6_60%,transparent_40%)] opacity-[1]"
+            >
+              <div className="flex items-center justify-center py-3 px-8">
+                Ver más características
+              </div>
+            </MovingBorderButton>
           </Link>
         </div>
       </div>

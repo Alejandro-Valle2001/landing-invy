@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
-import Logo from "@/public/assests/logoheader.png";
+import Logo from "@/public/assests/logomoderno.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Button from "./Button";
 
@@ -21,19 +21,33 @@ const Header = () => {
       } else {
         setIsScrolled(false);
       }
-      // Cerrar el menú al hacer scroll en móvil
-      if (window.innerWidth < 768) {
+      // Cerrar el menú al hacer scroll en móvil solo si está abierto
+      if (window.innerWidth < 768 && isMenuOpen) {
         setIsMenuOpen(false);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Prevenir scroll del body cuando el menú está abierto en móvil
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup al desmontar el componente
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
 
   // Manejar clic en enlaces del menú móvil
   const handleNavClick = () => {
@@ -62,7 +76,7 @@ const Header = () => {
 
   return (
     <header 
-      className={`relative flex flex-col md:flex-row justify-between items-center px-6 py-4 backdrop-blur-md sticky top-0 z-50 
+      className={`relative flex flex-col md:flex-row justify-between items-center px-6 py-4 backdrop-blur-md sticky top-0 z-[100] 
         bg-white shadow-md transition-all duration-300
         ${isScrolled ? 'py-2' : 'py-4'}`}
     >
@@ -70,7 +84,7 @@ const Header = () => {
         <Image src={Logo} alt="Logo" className="cursor-pointer h-10 w-auto" width={150} height={40} />
         <button 
           onClick={toggleMenu}
-          className="md:hidden text-gray-700 focus:outline-none"
+          className="md:hidden text-gray-700 focus:outline-none z-[110]"
           aria-label="Toggle menu"
         >
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -78,8 +92,8 @@ const Header = () => {
       </div>
 
       {/* Menú de navegación */}
-      <nav className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex w-full md:w-auto justify-center md:justify-end mt-4 md:mt-0`}>
-        <ul className="flex flex-col md:flex-row gap-6 items-center w-full md:w-auto">
+      <nav className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex w-full md:w-auto justify-center md:justify-end mt-4 md:mt-0 ${isMenuOpen ? 'absolute md:relative top-full left-0 right-0 bg-white md:bg-transparent shadow-lg md:shadow-none z-[105]' : ''}`}>
+        <ul className="flex flex-col md:flex-row gap-6 items-center w-full md:w-auto py-4 md:py-0 px-6 md:px-0">
           <li className="w-full text-center md:w-auto">
             <a 
               href="/caracteristicas" 
@@ -113,7 +127,7 @@ const Header = () => {
               href="https://app.invyperu.com/login" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium text-center inline-block"
+              className="text-white bg-black px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors font-medium text-center inline-block"
             >
               Iniciar Sesión
             </a>
@@ -121,7 +135,7 @@ const Header = () => {
               href="https://app.invyperu.com/demo" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-white bg-black py-2 px-3 rounded-lg cursor-pointer hover:bg-gray-800 transition-colors font-medium text-center inline-block"
+              className="bg-blue-600 text-white py-2 px-3 rounded-lg cursor-pointer hover:bg-blue-700 transition-colors font-medium text-center inline-block"
             >
               Probar Demo
             </a>

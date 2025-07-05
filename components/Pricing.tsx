@@ -25,8 +25,8 @@ const Pricing = () => {
         {/* Pricing Cards */}
         <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
           
-          {/* Demo Access Card - Izquierda */}
-          <div className="relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl p-8 overflow-hidden shadow-2xl lg:col-span-2">
+          {/* Demo Access Card - Izquierda en desktop, segundo en móvil */}
+          <div className="relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl p-8 overflow-hidden shadow-2xl lg:col-span-2 order-2 lg:order-1">
             {/* Badge */}
             <div className="absolute top-6 left-6">
               <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
@@ -68,8 +68,8 @@ const Pricing = () => {
             </div>
           </div>
 
-          {/* Membership Card - Derecha */}
-          <div className="relative bg-white rounded-3xl p-8 shadow-2xl border border-gray-200 lg:col-span-3">
+          {/* Membership Card - Derecha en desktop, primero en móvil */}
+          <div className="relative bg-white rounded-3xl p-8 shadow-2xl border border-gray-200 lg:col-span-3 order-1 lg:order-2">
             {/* Star decoration */}
             <div className="absolute top-8 right-8">
               <FaStar className="text-2xl text-yellow-400" />
@@ -78,15 +78,15 @@ const Pricing = () => {
             <div className="mb-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-2">PLAN PRO</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-5xl font-black text-gray-900">S/.189</span>
+                <span className="text-5xl font-black text-gray-900">S/.129</span>
                 <span className="text-xl text-gray-600 font-medium">/mes</span>
               </div>
-              <div className="text-sm text-gray-500 line-through mb-1">S/.300/mes</div>
-              <div className="text-lg font-semibold text-blue-600">Acceso completo</div>
+              <div className="text-sm text-gray-500 line-through mb-1">S/.399/mes</div>
+              <div className="text-lg font-semibold text-blue-600">Acceso Completo</div>
             </div>
 
                          <div className="mb-8">
-               <h4 className="text-lg font-bold text-gray-900 mb-4">Incluye todo esto y más</h4>
+              
                <div className="space-y-3">
                  <div className="flex items-center gap-3">
                    <FaCheck className="text-green-500 flex-shrink-0" />
@@ -129,23 +129,7 @@ const Pricing = () => {
           </div>
         </div>
 
-        {/* Trust indicators */}
-        <div className="mt-16 text-center">
-          <div className="flex flex-wrap justify-center items-center gap-8 text-gray-500 text-sm">
-            <div className="flex items-center gap-2">
-              🔒 <span>Datos 100% seguros</span>
-            </div>
-            <div className="flex items-center gap-2">
-              ⚡ <span>Configuración en 5 minutos</span>
-            </div>
-            <div className="flex items-center gap-2">
-              ✅ <span>Garantía de satisfacción</span>
-            </div>
-            <div className="flex items-center gap-2">
-              💳 <span>Sin permanencia</span>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   );
