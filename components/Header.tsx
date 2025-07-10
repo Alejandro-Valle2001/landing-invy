@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
-import Logo from "@/public/assests/logomoderno.png";
+import Logo from "@/public/assests/invylogo1.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import Button from "./Button";
 
@@ -76,58 +76,61 @@ const Header = () => {
 
   return (
     <header 
-      className={`relative flex flex-col md:flex-row justify-between items-center px-6 py-4 backdrop-blur-md sticky top-0 z-[100] 
-        bg-white shadow-md transition-all duration-300
+      className={`relative sticky top-0 z-[100] bg-gradient-to-r from-blue-600 to-blue-700 backdrop-blur-xl transition-all duration-300
         ${isScrolled ? 'py-2' : 'py-4'}`}
     >
-      <div className="w-full md:w-auto flex justify-between items-center">
-        <Image src={Logo} alt="Logo" className="cursor-pointer h-10 w-auto" width={150} height={40} />
-        <button 
-          onClick={toggleMenu}
-          className="md:hidden text-gray-700 focus:outline-none z-[110]"
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-        </button>
-      </div>
+      {/* Contenedor principal con glassmorphism */}
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="relative flex items-center justify-between">
+          
+          {/* Logo */}
+          <div className="flex items-center">
+            <Image src={Logo} alt="Logo" className="cursor-pointer h-12 w-auto" width={180} height={48} />
+          </div>
 
-      {/* Menú de navegación */}
-      <nav className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex w-full md:w-auto justify-center md:justify-end mt-4 md:mt-0 ${isMenuOpen ? 'absolute md:relative top-full left-0 right-0 bg-white md:bg-transparent shadow-lg md:shadow-none z-[105]' : ''}`}>
-        <ul className="flex flex-col md:flex-row gap-6 items-center w-full md:w-auto py-4 md:py-0 px-6 md:px-0">
-          <li className="w-full text-center md:w-auto">
-            <a 
-              href="/caracteristicas" 
-              onClick={handleNavClick} 
-              className="block py-2 hover:text-blue-600 transition-colors w-full cursor-pointer"
-            >
-              Beneficios
-            </a>
-          </li>
-          <li className="w-full text-center md:w-auto">
-            <button 
-              onClick={() => scrollToSection('precio')} 
-              className="block py-2 hover:text-blue-600 transition-colors w-full cursor-pointer"
-            >
-              Precio
-            </button>
-          </li>
-          <li className="w-full text-center md:w-auto">
-            <button 
-              onClick={() => scrollToSection('testimonios')} 
-              className="block py-2 hover:text-blue-600 transition-colors w-full cursor-pointer"
-            >
-              Testimonios
-            </button>
-          </li>
-          <li className="w-full text-center md:w-auto">
-            <a href="/soporte" onClick={handleNavClick} className="block py-2 hover:text-blue-600 transition-colors">Soporte</a>
-          </li>
-          <li className="w-full flex flex-col md:flex-row gap-3 justify-center md:w-auto">
+          {/* Menú centrado absolutamente - Solo desktop */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
+            <nav className="bg-white/10 backdrop-blur-lg rounded-full border border-white/20 shadow-lg px-2 py-1">
+              <ul className="flex items-center gap-1">
+                <li>
+                  <a 
+                    href="/caracteristicas" 
+                    onClick={handleNavClick} 
+                    className="block py-2 px-4 text-white hover:text-blue-200 hover:bg-white/20 transition-all duration-300 cursor-pointer font-bold rounded-full"
+                  >
+                    Beneficios
+                  </a>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('precio')} 
+                    className="block py-2 px-4 text-white hover:text-blue-200 hover:bg-white/20 transition-all duration-300 cursor-pointer font-bold rounded-full"
+                  >
+                    Precio
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => scrollToSection('testimonios')} 
+                    className="block py-2 px-4 text-white hover:text-blue-200 hover:bg-white/20 transition-all duration-300 cursor-pointer font-bold rounded-full"
+                  >
+                    Testimonios
+                  </button>
+                </li>
+                <li>
+                  <a href="/soporte" onClick={handleNavClick} className="block py-2 px-4 text-white hover:text-blue-200 hover:bg-white/20 transition-all duration-300 font-bold rounded-full">Soporte</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          {/* Botones de acción con glassmorphism */}
+          <div className="hidden md:flex items-center gap-3">
             <a 
               href="https://app.invyperu.com/login" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-white bg-black px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors font-medium text-center inline-block"
+              className="text-gray-800 bg-white/90 backdrop-blur-lg px-4 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium text-center inline-block border border-white/20 shadow-lg"
             >
               Iniciar Sesión
             </a>
@@ -135,13 +138,80 @@ const Header = () => {
               href="https://app.invyperu.com/demo" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-blue-600 text-white py-2 px-3 rounded-lg cursor-pointer hover:bg-blue-700 transition-colors font-medium text-center inline-block"
+              className="bg-yellow-400/90 backdrop-blur-lg text-gray-800 py-2 px-4 rounded-full cursor-pointer hover:bg-yellow-500 transition-all duration-300 font-medium text-center inline-block border border-yellow-300/20 shadow-lg"
             >
               Probar Demo
             </a>
-          </li>
-        </ul>
-      </nav>
+          </div>
+
+          {/* Botón menú móvil */}
+          <button 
+            onClick={toggleMenu}
+            className="md:hidden text-white focus:outline-none z-[110] bg-white/10 backdrop-blur-lg p-2 rounded-full border border-white/20"
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Menú móvil con glassmorphism */}
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-white/20 shadow-xl z-[105]">
+          <nav className="px-6 py-4">
+            <ul className="space-y-2">
+              <li>
+                <a 
+                  href="/caracteristicas" 
+                  onClick={handleNavClick} 
+                  className="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 font-bold rounded-lg"
+                >
+                  Beneficios
+                </a>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('precio')} 
+                  className="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 font-bold rounded-lg w-full text-left"
+                >
+                  Precio
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('testimonios')} 
+                  className="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 font-bold rounded-lg w-full text-left"
+                >
+                  Testimonios
+                </button>
+              </li>
+              <li>
+                <a href="/soporte" onClick={handleNavClick} className="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 font-bold rounded-lg">Soporte</a>
+              </li>
+            </ul>
+            
+            {/* Botones móviles */}
+            <div className="flex flex-col gap-3 mt-6">
+              <a 
+                href="https://app.invyperu.com/login" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-800 bg-white px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium text-center border shadow-sm"
+              >
+                Iniciar Sesión
+              </a>
+              <a 
+                href="https://app.invyperu.com/demo" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-yellow-400 text-gray-800 py-3 px-4 rounded-lg cursor-pointer hover:bg-yellow-500 transition-colors font-medium text-center shadow-sm"
+              >
+                Probar Demo
+              </a>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };

@@ -23,7 +23,7 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="bg-gray-50 px-4 lg:px-8 pt-12 pb-8"
+      className="bg-white px-4 lg:px-8 pt-12 pb-8"
     >
       {/* Mobile Layout - White card */}
       <div className="block lg:hidden">
