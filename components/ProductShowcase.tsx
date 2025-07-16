@@ -59,23 +59,23 @@ const ProductShowcase = () => {
       className="bg-white flex flex-col items-center overflow-x-hidden pb-24"
     >
       {/* Sección de Estadísticas Rediseñada */}
-      <div ref={statsRef} className="w-full max-w-6xl mx-auto mt-20 mb-12 px-4 sm:px-6">
+      <div ref={statsRef} className="w-full max-w-6xl mx-auto mt-10 md:mt-20 mb-12 px-4 sm:px-6">
         {/* Header de la sección con estilo consistente */}
-        <div className="flex flex-col items-center font-medium mb-6 px-8 mx-auto md:w-[550px] lg:w-[630px]">
+        <div className="flex flex-col items-center font-medium mb-3 md:mb-6 px-8 mx-auto md:w-[550px] lg:w-[630px]">
           <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80">
             Números que hablan por sí solos
           </div>
-          <div className="text-3xl md:text-4xl lg:text-5xl py-6 font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text">
+          <div className="text-3xl md:text-4xl lg:text-5xl py-3 md:py-6 font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text">
             Más de 500 usuarios confían en Invy
           </div>
-          <div className="text-center text-lg mb-2 md:text-xl">
+          <div className="text-center text-lg mb-2 md:text-xl hidden md:block">
             Únete a cientos de empresas que ya optimizaron su gestión de inventario
           </div>
         </div>
 
         {/* Grid de estadísticas simplificado y elegante */}
         <div className="bg-gray-100 p-8 rounded-2xl shadow-sm">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Estadística 1 */}
           <div className="text-center">
             <div className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text mb-2">
@@ -131,7 +131,7 @@ const ProductShowcase = () => {
           <div className="text-center">
             <div className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text mb-2">
               {startAnimation ? (
-                <CountUp end={2100} duration={3.8} separator="," delay={0.8} prefix="+" />
+                <CountUp end={24} duration={5} separator="," delay={0.8} prefix="+" />
               ) : (
                 <span>0</span>
               )}
@@ -147,7 +147,7 @@ const ProductShowcase = () => {
       </div>
       </div>
 
-      <div className="flex flex-col items-center font-medium mt-24 px-8 mx-auto md:w-[550px] lg:w-[630px]">
+      <div className="flex flex-col items-center font-medium mt-12 md:mt-24 px-8 mx-auto md:w-[550px] lg:w-[630px]">
         <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80">
           Mejora tu productividad
         </div>
@@ -202,6 +202,7 @@ const ProductShowcase = () => {
             }
           }}
         />
+        
         <Image 
           src={DashboardImage} 
           alt="Dashboard Image" 
@@ -209,6 +210,7 @@ const ProductShowcase = () => {
           width={1200} 
           height={811} 
         />
+
         <motion.img
           src={Tube.src}
           alt="Tube Image"
