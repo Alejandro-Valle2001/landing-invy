@@ -108,13 +108,13 @@ const Client = () => {
                     {/* Content */}
                     <div className="w-full md:w-1/2 lg:w-7/12 mt-6 md:mt-0 text-center md:text-left">
                       <p className="text-lg font-medium text-gray-700 leading-relaxed mb-4">
-                        "{currentClient.testimonial}"
+                        &ldquo;{currentClient.testimonial}&rdquo;
                       </p>
                       <div className="mb-4">
                         <p className="text-xl font-bold text-gray-900">{currentClient.name}</p>
                         <p className="text-blue-600 font-semibold">{currentClient.position}</p>
                         <p className="text-gray-500">{currentClient.company}</p>
-                   </div>
+                      </div>
                       <div className="flex items-center justify-center md:justify-start space-x-4">
                         {currentClient.social.facebook && (
                           <a href={currentClient.social.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-600 transition-colors"><FaFacebook size={24}/></a>
