@@ -25,21 +25,6 @@ const SoportePage = () => {
       borderColor: "border-blue-200"
     },
     {
-      iconType: "envelope",
-      title: "Ticket de ayuda",
-      description: "Deja tus datos con tu solicitud y nuestro equipo te contactará para asesorarte.",
-      features: [
-        "Soporte personalizado",
-        "Respuesta en 24 horas",
-        "Seguimiento de ticket",
-        "Asistencia especializada"
-      ],
-      action: "Crear ticket",
-      href: "#ticket",
-      bgColor: "from-green-50 to-emerald-50",
-      borderColor: "border-green-200"
-    },
-    {
       iconType: "phone",
       title: "Llámanos",
       description: "Te dejamos nuestro número de contacto para atención directa.",
@@ -58,20 +43,36 @@ const SoportePage = () => {
 
   const faqs = useMemo(() => [
     {
-      question: "¿Cómo empiezo a usar Invy?",
-      answer: "Es muy fácil. Solo regístrate con tu correo, confirma tu cuenta y comienza a cargar tus productos. Te guiamos paso a paso en el proceso."
+      question: "¿Qué es este sistema?",
+      answer: "Es una plataforma en la nube para gestionar tu inventario, ventas y reportes en tiempo real."
     },
     {
-      question: "¿Puedo importar mis datos desde Excel?",
-      answer: "¡Sí! Invy permite importar tus inventarios desde archivos Excel. También ofrecemos asistencia gratuita para la migración de datos."
+      question: "¿Para quién está pensado?",
+      answer: "Está diseñado para empresas que necesitan controlar su inventario, gestionar ventas y tomar decisiones basadas en datos precisos."
     },
     {
-      question: "¿Qué incluye la prueba gratuita?",
-      answer: "La prueba de 30 días incluye todas las funciones principales: gestión de inventario, reportes, alertas de stock bajo y soporte técnico."
+      question: "¿Necesito instalar algo?",
+      answer: "No, es una aplicación web que funciona desde cualquier navegador. Solo necesitas una conexión a internet para acceder desde cualquier dispositivo."
     },
     {
-      question: "¿Necesito conocimientos técnicos?",
-      answer: "Para nada. Invy está diseñado para ser intuitivo y fácil de usar. Si has usado WhatsApp, puedes usar Invy sin problemas."
+      question: "¿Funciona en celular?",
+      answer: "Sí, la plataforma está completamente optimizada para dispositivos móviles. Puedes gestionar tu inventario desde tu smartphone o tablet sin problemas."
+    },
+    {
+      question: "¿Tiene comisiones por ventas?",
+      answer: "No cobramos comisiones por ventas. Solo pagas la suscripción mensual del plan, sin costos adicionales por transacciones."
+    },
+    {
+      question: "¿Cómo puedo ver una demostración de la plataforma?",
+      answer: "Puedes solicitar una demo gratuita desde nuestro sitio web. Te mostraremos todas las funcionalidades de INVY sin compromiso alguno."
+    },
+    {
+      question: "¿Se puede integrar con mi tienda online?",
+      answer: "Mas adelante se podrá integrar con las principales plataformas como Shopify, MercadoLibre y Falabella para sincronizar automáticamente tu inventario."
+    },
+    {
+      question: "¿Cómo transfiero mis datos actuales a INVY?",
+      answer: "Nuestro equipo de soporte te ayuda a configurar tu inventario inicial y migrar tus datos de manera segura. Te guiamos paso a paso en todo el proceso."
     }
   ], []);
 
@@ -111,12 +112,12 @@ const SoportePage = () => {
 
       {/* Support Options */}
       <section className="pt-2 pb-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 justify-items-center">
             {supportOptions.map((option, index) => (
               <div
                 key={index}
-                className={`relative group bg-gradient-to-br ${option.bgColor} border ${option.borderColor} rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2`}
+                className={`relative group bg-gradient-to-br ${option.bgColor} border ${option.borderColor} rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 w-full max-w-sm`}
               >
                 {/* Icon */}
                 <div className="mb-4">

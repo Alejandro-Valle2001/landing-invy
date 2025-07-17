@@ -101,7 +101,7 @@ export default function HeroSectionOne() {
                 <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-3 shadow-2xl">
                   <div className="relative overflow-hidden rounded-xl bg-gray-900">
                     <video 
-                      className="w-full h-auto aspect-video object-cover"
+                      className="w-full h-auto aspect-video object-contain"
                       controls
                       preload="metadata"
                       poster="/assests/dashseparado.png"
