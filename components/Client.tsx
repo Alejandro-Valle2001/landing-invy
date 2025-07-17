@@ -12,7 +12,7 @@ const Client = () => {
       name: "Luis Bernal",
       position: "CEO y fundador",
       company: "@metaverso.group",
-      testimonial: "Antes llevábamos todo en Excel y siempre se nos escapaba algo. Ahora con esta plataforma tenemos orden en el almacén y hasta los chicos la entienden fácil. Nos ayuda de verdad en el día a día.",
+      testimonial: "Antes en Excel siempre se nos pasaba algo. Ahora con esta plataforma todo está ordenado y es fácil de usar para todos.",
       video: "/assests/metaverso.mp4",
       social: {
         tiktok: "https://www.tiktok.com/@elblogdeluis?_t=ZM-8wgobwEpY98&_r=1",
@@ -60,24 +60,24 @@ const Client = () => {
   const currentClient = clients[currentIndex];
 
   return (
-    <section id="testimonios" className="py-12 md:py-16 lg:py-20 px-4 bg-gradient-to-br from-gray-50 to-white">
+    <section id="testimonios" className="pt-6 pb-0 md:pt-8 md:pb-0 lg:pt-10 lg:pb-0 px-4 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-6 md:mb-8">
           <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80 mx-auto mb-4">
             Ellos ya lo usan
           </div>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text mb-4">
             Transformando negocios reales
           </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto hidden md:block">
             Descubre cómo empresas como la tuya han transformado su gestión de inventario con nuestra plataforma.
           </p>
         </div>
 
         {/* --- Testimonial Carousel --- */}
         <div className="relative">
-          <div className="min-h-[650px] md:min-h-0">
+          <div className="min-h-[550px] md:min-h-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -136,31 +136,17 @@ const Client = () => {
             </AnimatePresence>
             </div>
 
-          {/* Dots */}
-          <div className="flex justify-center gap-2 py-4">
-              {clients.map((_, index) => (
-                <button
-                  key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentIndex === index ? 'bg-blue-600 w-4' : 'bg-gray-300'
-                  }`}
-                  aria-label={`Ir al testimonio ${index + 1}`}
-                />
-              ))}
-            </div>
-
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/50 backdrop-blur-sm text-gray-700 p-3 rounded-full hover:bg-white/80 transition-all duration-300 z-10 hidden md:block"
+            className="absolute left-0 top-[70%] -translate-y-1/2 bg-white/50 backdrop-blur-sm text-gray-700 p-3 rounded-full hover:bg-white/80 transition-all duration-300 z-10"
             aria-label="Anterior"
           >
             <FaChevronLeft size={20} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/50 backdrop-blur-sm text-gray-700 p-3 rounded-full hover:bg-white/80 transition-all duration-300 z-10 hidden md:block"
+            className="absolute right-0 top-[70%] -translate-y-1/2 bg-white/50 backdrop-blur-sm text-gray-700 p-3 rounded-full hover:bg-white/80 transition-all duration-300 z-10"
             aria-label="Siguiente"
           >
             <FaChevronRight size={20} />

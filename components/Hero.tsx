@@ -10,6 +10,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
 
+// Declarar el tipo para Facebook Pixel
+declare global {
+  interface Window {
+    fbq: any;
+  }
+}
+
 const Hero = () => {
   const heroRef = useRef(null);
 
@@ -23,7 +30,7 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="bg-white px-4 lg:px-8 pt-12 pb-8"
+      className="bg-white px-4 lg:px-8 pt-6 pb-8"
     >
       {/* Mobile Layout - White card */}
       <div className="block lg:hidden">
@@ -109,15 +116,20 @@ const Hero = () => {
               <MovingBorderButton
                 borderRadius="1rem"
                 as="a"
-                href="https://app.invyperu.com/demo"
+                href="https://app.invyperu.com/formulario"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && window.fbq) {
+                    window.fbq('track', 'InitiateCheckout');
+                  }
+                }}
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
                 containerClassName="w-full h-auto"
                 borderClassName="h-20 w-20 bg-[radial-gradient(#3b82f6_60%,transparent_40%)] opacity-[1]"
               >
                 <div className="flex items-center justify-center py-3 px-6">
-                  Prueba Gratuita
+                  Comprar ahora
                 </div>
               </MovingBorderButton>
               
@@ -244,15 +256,20 @@ const Hero = () => {
                                     <MovingBorderButton
                     borderRadius="1rem"
                     as="a"
-                    href="https://app.invyperu.com/demo"
+                    href="https://app.invyperu.com/formulario"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      if (typeof window !== 'undefined' && window.fbq) {
+                        window.fbq('track', 'InitiateCheckout');
+                      }
+                    }}
                     className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
                     containerClassName="w-auto h-auto"
                     borderClassName="h-20 w-20 bg-[radial-gradient(#3b82f6_60%,transparent_40%)] opacity-[1]"
                   >
                     <div className="flex items-center justify-center py-3 px-6">
-                      Prueba Gratuita
+                      Comprar ahora
                     </div>
                   </MovingBorderButton>
                 </motion.div>

@@ -7,10 +7,10 @@ import { useState } from "react";
 
 const Pricing = () => {
   return (
-    <div id="precio" className="py-16 bg-gray-50">
+    <div id="precio" className="pt-4 pb-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80 mx-auto mb-4">
             El éxito no tiene precio
           </div>
@@ -122,7 +122,7 @@ const Pricing = () => {
                  rel="noopener noreferrer"
                  className="w-full bg-blue-600 text-white font-bold py-4 px-6 rounded-xl hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center gap-2 group"
                >
-                 Solicitar ahora
+                 Comprar ahora
                  <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
                </a>
              </div>
