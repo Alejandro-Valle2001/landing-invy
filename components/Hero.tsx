@@ -32,11 +32,25 @@ const Hero = () => {
       ref={heroRef}
       className="bg-white px-4 lg:px-8 pt-6 pb-8"
     >
-      {/* Mobile Layout - White card */}
+      {/* Mobile Layout - Video background card */}
       <div className="block lg:hidden">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-          {/* Content centered in white card */}
-          <div className="flex flex-col justify-center items-center px-6 py-12 text-center">
+        <div className="relative bg-black rounded-3xl shadow-2xl overflow-hidden">
+          {/* Background Video */}
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/assests/herovideo.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/60"></div>
+          
+          {/* Content centered in card */}
+          <div className="relative z-10 flex flex-col justify-center items-center px-6 py-12 text-center">
             
             {/* Social Proof */}
             <motion.div 
@@ -62,32 +76,29 @@ const Hero = () => {
                   className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-lg"
                 />
               </div>
-                                           <span className="text-sm font-semibold text-gray-800 uppercase tracking-wide">
-                <span className="font-bold text-gray-900">611</span> EMPRESAS YA LO USAN
+              <span className="text-sm font-semibold text-white uppercase tracking-wide">
+                <span className="font-bold text-white">611</span> EMPRESAS YA LO USAN
               </span>
              </motion.div>
 
              {/* Opening Question */}
              <motion.p 
-               className="text-lg sm:text-xl text-gray-700 font-medium mb-4"
+               className="text-lg sm:text-xl text-white font-medium mb-4"
                initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.6, delay: 0.3 }}
              >
-               <span className="bg-yellow-300 px-2 py-1 rounded">¿Tu inventario te está costando dinero?</span>
+               <span className="bg-yellow-300 text-black px-2 py-1 rounded">¿Estás perdiendo dinero por culpa de tu inventario?</span>
              </motion.p>
 
              {/* Headline */}
              <motion.h1 
-               className="text-2xl sm:text-3xl font-black leading-tight tracking-tighter mb-6 bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text"
+               className="text-2xl sm:text-3xl font-black leading-tight tracking-tighter mb-6 text-white"
                initial={{ opacity: 0, y: 30 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8, delay: 0.4 }}
              >
-               Convierte tu stock en
-               <span className="block">
-                 una maquina de ventas
-               </span>
+               Dale inteligencia a tu inventario y deja de perder ventas
              </motion.h1>
 
              {/* Description */}
@@ -97,12 +108,8 @@ const Hero = () => {
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8, delay: 0.6 }}
              >
-
-               <p className="text-sm text-gray-800 leading-relaxed font-semibold">
+               <p className="text-sm text-white leading-relaxed font-semibold">
                  ✅ Stock inteligente = más ganancias
-               </p>
-               <p className="text-base text-gray-700 font-medium mt-4">
-                 Controla, predice y optimiza tu inventario con INVY
                </p>
              </motion.div>
 
@@ -116,7 +123,7 @@ const Hero = () => {
               <MovingBorderButton
                 borderRadius="1rem"
                 as="a"
-                href="https://app.invyperu.com/formulario"
+                href="https://app.invyperu.com/prueba30dias"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {
@@ -129,7 +136,7 @@ const Hero = () => {
                 borderClassName="h-20 w-20 bg-[radial-gradient(#3b82f6_60%,transparent_40%)] opacity-[1]"
               >
                 <div className="flex items-center justify-center py-3 px-6">
-                  Comprar ahora
+                  Prueba Gratis
                 </div>
               </MovingBorderButton>
               
@@ -138,7 +145,7 @@ const Hero = () => {
                   const section = document.getElementById('testimonios');
                   section?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-transparent border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 hover:shadow-md"
+                className="bg-white/20 backdrop-blur-sm border-2 border-white/30 hover:border-white/50 text-white font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 hover:bg-white/30"
               >
                 Ver casos de éxito
               </button>
@@ -147,178 +154,141 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Desktop Layout - Side by side */}
+      {/* Desktop Layout - Video background card */}
       <div className="hidden lg:flex justify-center">
         <motion.div
-          className="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-7xl w-full"
+          className="relative bg-black rounded-3xl shadow-2xl overflow-hidden max-w-4xl w-full"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="flex min-h-[80vh] lg:min-h-[700px]">
+          {/* Background Video */}
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/assests/herovideo.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/60"></div>
+          
+          <div className="relative z-10 flex justify-center items-center min-h-[80vh] lg:min-h-[700px] p-8 lg:p-16">
             
-            {/* Left Content - Text */}
-            <div className="flex-1 flex items-center justify-center p-8 lg:p-16">
-              <div className="max-w-lg space-y-8">
-                
-                {/* Social Proof */}
-                <motion.div 
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  <div className="flex -space-x-3">
-                    <img
-                      src={AlphaImage.src}
-                      alt="Usuario satisfecho"
-                      className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
-                    />
-                    <img
-                      src={MetaImage.src}
-                      alt="Usuario satisfecho"
-                      className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
-                    />
-                    <img
-                      src={AgurtoImage.src}
-                      alt="Usuario satisfecho"
-                      className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
-                    />
-                  </div>
-                  <span className="text-base font-semibold text-gray-800 uppercase tracking-wide">
-                    <span className="font-bold text-gray-900">611</span> EMPRESAS YA LO USAN
-                  </span>
-                </motion.div>
-
-                {/* Opening Question */}
-                <motion.p 
-                  className="text-xl lg:text-2xl text-gray-700 font-medium"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  <span className="bg-yellow-300 px-2 py-1 rounded">¿Tu inventario te está costando dinero?</span>
-                </motion.p>
-
-                {/* Headline */}
-                <motion.div 
-                  className="space-y-4"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                >
-                  <h1 className="text-3xl lg:text-4xl xl:text-5xl font-black leading-tight tracking-tighter bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text">
-                    Convierte tu stock en
-                    <span className="block">
-                      una maquina de ventas
-                    </span>
-                  </h1>
-                </motion.div>
-
-                {/* Description */}
-                <motion.div 
-                  className="space-y-3"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                >
-                  <p className="text-base text-gray-600 leading-relaxed">
-                    ❌ Sin stock = ventas perdidas
-                  </p>
-                  <p className="text-base text-gray-600 leading-relaxed">
-                    ❌ Exceso de stock = dinero atrapado
-                  </p>
-                  <p className="text-base text-gray-800 leading-relaxed font-semibold">
-                    ✅ Stock inteligente = más ganancias
-                  </p>
-                                     <p className="text-lg text-gray-700 font-medium mt-4">
-                     Controla, predice y optimiza tu inventario con INVY
-                   </p>
-                </motion.div>
-
-                {/* Action Buttons */}
-                <motion.div 
-                  className="flex flex-col sm:flex-row items-start gap-4 pt-4"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                >
-                  <button 
-                    onClick={() => {
-                      const section = document.getElementById('testimonios');
-                      section?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="group bg-transparent border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 hover:shadow-md"
-                  >
-                    Ver casos de éxito
-                  </button>
-                  
-                                    <MovingBorderButton
-                    borderRadius="1rem"
-                    as="a"
-                    href="https://app.invyperu.com/formulario"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => {
-                      if (typeof window !== 'undefined' && window.fbq) {
-                        window.fbq('track', 'InitiateCheckout');
-                      }
-                    }}
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
-                    containerClassName="w-auto h-auto"
-                    borderClassName="h-20 w-20 bg-[radial-gradient(#3b82f6_60%,transparent_40%)] opacity-[1]"
-                  >
-                    <div className="flex items-center justify-center py-3 px-6">
-                      Comprar ahora
-                    </div>
-                  </MovingBorderButton>
-                </motion.div>
-              </div>
-            </div>
-
-            {/* Right Content - Single Image */}
-            <div className="relative flex-1 bg-gray-100 overflow-hidden rounded-r-3xl">
-              <motion.div
-                className="relative h-full w-full"
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, delay: 0.6 }}
-                style={{ translateY }}
+            {/* Centered Content */}
+            <div className="max-w-2xl text-center space-y-8">
+              
+              {/* Social Proof */}
+              <motion.div 
+                className="flex items-center justify-center gap-3"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
               >
-                {/* Single Main Image */}
-                <img
-                  src={WomanImage.src}
-                  alt="Profesional gestionando inventario"
-                  className="w-full h-full object-cover"
-                />
-                
-                {/* Stock alert notification */}
-                <motion.div 
-                  className="absolute top-8 right-8 bg-white rounded-full px-4 py-2 shadow-xl flex items-center gap-2 border border-gray-100"
-                  animate={{ y: [-3, 3, -3] }}
-                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                >
-                  <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                  <span className="text-sm font-medium text-gray-800">Stock bajo detectado</span>
-                </motion.div>
+                <div className="flex -space-x-3">
+                  <img
+                    src={AlphaImage.src}
+                    alt="Usuario satisfecho"
+                    className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
+                  />
+                  <img
+                    src={MetaImage.src}
+                    alt="Usuario satisfecho"
+                    className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
+                  />
+                  <img
+                    src={AgurtoImage.src}
+                    alt="Usuario satisfecho"
+                    className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
+                  />
+                </div>
+                <span className="text-base font-semibold text-white uppercase tracking-wide">
+                  <span className="font-bold text-white">611</span> EMPRESAS YA LO USAN
+                </span>
+              </motion.div>
 
-                {/* Inventory icon */}
-                <motion.div 
-                  className="absolute bottom-8 left-8 bg-white rounded-full p-4 shadow-xl border border-gray-100"
-                  animate={{ 
-                    scale: [1, 1.1, 1],
+              {/* Opening Question */}
+              <motion.p 
+                className="text-xl lg:text-2xl text-white font-medium"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <span className="bg-yellow-300 text-black px-2 py-1 rounded">¿Estás perdiendo dinero por culpa de tu inventario?</span>
+              </motion.p>
+
+              {/* Headline */}
+              <motion.div 
+                className="space-y-4"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <h1 className="text-3xl lg:text-4xl xl:text-5xl font-black leading-tight tracking-tighter text-white">
+                  Dale inteligencia a tu inventario y deja de perder ventas
+                </h1>
+              </motion.div>
+
+              {/* Description */}
+              <motion.div 
+                className="space-y-3"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <p className="text-base text-white leading-relaxed font-semibold">
+                  ✅ Stock inteligente = más ganancias
+                </p>
+                <p className="text-base text-gray-200 leading-relaxed">
+                  ❌ Exceso de stock = dinero atrapado
+                </p>
+                <p className="text-base text-gray-200 leading-relaxed">
+                  ❌ Sin stock = ventas perdidas
+                </p>
+                <p className="text-lg text-white font-medium mt-4">
+                  Controla y predice tu inventario con INVY
+                </p>
+              </motion.div>
+
+              {/* Action Buttons */}
+              <motion.div 
+                className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                <button 
+                  onClick={() => {
+                    const section = document.getElementById('testimonios');
+                    section?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                  className="bg-white/20 backdrop-blur-sm border-2 border-white/30 hover:border-white/50 text-white font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 hover:bg-white/30"
                 >
-                  <div className="relative">
-                    {/* Blue dot indicator */}
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-500 rounded-full border-2 border-white"></div>
-                    <svg className="w-6 h-6 text-gray-700" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"/>
-                      <path fillRule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clipRule="evenodd"/>
-                    </svg>
+                  Ver casos de éxito
+                </button>
+                
+                <MovingBorderButton
+                  borderRadius="1rem"
+                  as="a"
+                  href="https://app.invyperu.com/prueba30dias"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && window.fbq) {
+                      window.fbq('track', 'InitiateCheckout');
+                    }
+                  }}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
+                  containerClassName="w-auto h-auto"
+                  borderClassName="h-20 w-20 bg-[radial-gradient(#3b82f6_60%,transparent_40%)] opacity-[1]"
+                >
+                  <div className="flex items-center justify-center py-3 px-6">
+                    Prueba Gratis
                   </div>
-                </motion.div>
+                </MovingBorderButton>
               </motion.div>
             </div>
           </div>
