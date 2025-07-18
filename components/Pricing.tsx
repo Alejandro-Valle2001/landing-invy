@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const Pricing = () => {
   return (
-    <div id="precio" className="pt-4 pb-16 bg-gray-50">
+    <div id="precio" className="pt-16 pb-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-8">
@@ -23,94 +23,82 @@ const Pricing = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+        <div className="flex justify-center max-w-4xl mx-auto">
           
-          {/* Demo Access Card - Izquierda en desktop, segundo en móvil */}
-          <div className="relative bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl p-8 overflow-hidden shadow-2xl lg:col-span-2 order-2 lg:order-1">
-            {/* Badge */}
-            <div className="absolute top-6 left-6">
-              <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                <span className="text-white text-sm font-medium">Demo gratuita</span>
-              </div>
-            </div>
+          {/* Membership Card - Plan Pro centrado */}
+          <div className="relative rounded-3xl p-8 shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden">
+            {/* Video de fondo */}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="/assests/pricingvideo.mp4" type="video/mp4" />
+            </video>
             
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
-            <div className="absolute top-8 right-8 w-4 h-4 bg-white/30 rounded-full"></div>
-            <div className="absolute top-12 right-16 w-2 h-2 bg-white/40 rounded-full"></div>
-            <div className="absolute top-16 right-12 w-3 h-3 bg-white/20 rounded-full"></div>
+            {/* Overlay oscuro para mejorar legibilidad */}
+            <div className="absolute inset-0 bg-black/60"></div>
             
-            <div className="relative z-10 text-white pt-16">
-              <h3 className="text-4xl font-black mb-6 tracking-tight">
-                VER<br/>
-                DEMO
-              </h3>
-              
-              <div className="bg-blue-800/30 rounded-xl p-4 mb-8 border border-blue-400/20">
-                <div className="flex items-center gap-2 text-blue-200 mb-2">
-                  <FaArrowRight className="text-sm" />
-                  <span className="text-sm font-medium">DESCUBRE INVY</span>
-                </div>
-                <p className="text-white text-sm">
-                  Conoce todas las funcionalidades de INVY en una demostración personalizada y sin compromiso.
-                </p>
+            {/* Contenido sobre el video */}
+            <div className="relative z-10">
+              {/* Star decoration */}
+              <div className="absolute top-0 right-0">
+                <FaStar className="text-2xl text-yellow-400" />
               </div>
-              
-              <a
-                href="https://app.invyperu.com/demo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full bg-white text-blue-600 font-bold py-4 px-6 rounded-xl hover:bg-blue-50 transition-colors duration-300 flex items-center justify-center gap-2 group"
-              >
-                Solicitar demo
-                <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
-          </div>
-
-          {/* Membership Card - Derecha en desktop, primero en móvil */}
-          <div className="relative bg-white rounded-3xl p-8 shadow-2xl border border-gray-200 lg:col-span-3 order-1 lg:order-2">
-            {/* Star decoration */}
-            <div className="absolute top-8 right-8">
-              <FaStar className="text-2xl text-yellow-400" />
-            </div>
             
             <div className="mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">PLAN PRO</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">PLAN PROFESIONAL</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-5xl font-black text-gray-900">S/.129</span>
-                <span className="text-xl text-gray-600 font-medium">/mes</span>
+                <span className="text-5xl font-black text-white">S/.129</span>
+                <span className="text-xl text-gray-200 font-medium">/mes</span>
               </div>
-              <div className="text-sm text-gray-500 line-through mb-1">S/.399/mes</div>
-              <div className="text-lg font-semibold text-blue-600">Acceso Completo</div>
+              <div className="text-sm text-gray-300 line-through mb-1">S/.399/mes</div>
             </div>
 
                          <div className="mb-8">
               
                <div className="space-y-3">
                  <div className="flex items-center gap-3">
-                   <FaCheck className="text-green-500 flex-shrink-0" />
-                   <span className="text-gray-700">Control total de inventario</span>
+                   <FaCheck className="text-green-400 flex-shrink-0" />
+                   <span className="text-white">Panel Administrativo</span>
                  </div>
                  <div className="flex items-center gap-3">
-                   <FaCheck className="text-green-500 flex-shrink-0" />
-                   <span className="text-gray-700">Reportes y análisis avanzados</span>
+                   <FaCheck className="text-green-400 flex-shrink-0" />
+                   <span className="text-white">Módulo de Inventario</span>
                  </div>
                  <div className="flex items-center gap-3">
-                   <FaCheck className="text-green-500 flex-shrink-0" />
-                   <span className="text-gray-700">Crea productos ilimitados</span>
+                   <FaCheck className="text-green-400 flex-shrink-0" />
+                   <span className="text-white">Módulo de Clientes</span>
                  </div>
                  <div className="flex items-center gap-3">
-                   <FaCheck className="text-green-500 flex-shrink-0" />
-                   <span className="text-gray-700">Múltiples sucursales</span>
+                   <FaCheck className="text-green-400 flex-shrink-0" />
+                   <span className="text-white">Módulo de Pedidos</span>
                  </div>
                  <div className="flex items-center gap-3">
-                   <FaCheck className="text-green-500 flex-shrink-0" />
-                   <span className="text-gray-700">Alertas inteligentes</span>
+                   <FaCheck className="text-green-400 flex-shrink-0" />
+                   <span className="text-white">Modulo de Reportes</span>
                  </div>
                  <div className="flex items-center gap-3">
-                   <FaCheck className="text-green-500 flex-shrink-0" />
-                   <span className="text-gray-700">Soporte prioritario 24/7</span>
+                   <FaCheck className="text-green-400 flex-shrink-0" />
+                   <span className="text-white">Graficos Avanzados</span>
+                 </div>
+                 <div className="flex items-center gap-3">
+                   <FaCheck className="text-green-400 flex-shrink-0" />
+                   <span className="text-white">Punto de Venta POS</span>
+                 </div>
+                 <div className="flex items-center gap-3">
+                   <FaCheck className="text-green-400 flex-shrink-0" />
+                   <span className="text-white">Hasta 3 sucursales</span>
+                 </div>
+                 <div className="flex items-center gap-3">
+                   <FaCheck className="text-green-400 flex-shrink-0" />
+                   <span className="text-white">Usuarios ilimitados</span>
+                 </div>
+                 <div className="flex items-center gap-3">
+                   <FaCheck className="text-green-400 flex-shrink-0" />
+                   <span className="text-white">Soporte Personalizado</span>
                  </div>
                </div>
              </div>
@@ -126,6 +114,7 @@ const Pricing = () => {
                  <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
                </a>
              </div>
+            </div>
           </div>
         </div>
 

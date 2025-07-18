@@ -7,7 +7,7 @@ import AlphaImage from "@/public/assests/alpha.jpg";
 import MetaImage from "@/public/assests/meta.jpg";
 import AgurtoImage from "@/public/assests/agurto.jpg";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
 
 // Declarar el tipo para Facebook Pixel
@@ -19,6 +19,9 @@ declare global {
 
 const Hero = () => {
   const heroRef = useRef(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isSlowConnection, setIsSlowConnection] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -26,6 +29,56 @@ const Hero = () => {
   });
 
   const translateY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+
+  // Detectar conexión lenta
+  useEffect(() => {
+    // @ts-ignore
+    if (navigator.connection) {
+      // @ts-ignore
+      const connection = navigator.connection;
+      const slowConnections = ['slow-2g', '2g', '3g'];
+      if (slowConnections.includes(connection.effectiveType) || connection.saveData) {
+        setIsSlowConnection(true);
+      }
+    }
+  }, []);
+
+  // Cargar video solo cuando el componente está visible y no hay conexión lenta
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isSlowConnection) {
+            setShouldLoadVideo(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isSlowConnection]);
+
+  const handleVideoLoad = () => {
+    setIsVideoLoaded(true);
+  };
+
+  // Función para crear poster del video si no existe
+  const generateVideoPoster = (videoElement: HTMLVideoElement) => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      canvas.width = videoElement.videoWidth;
+      canvas.height = videoElement.videoHeight;
+      ctx.drawImage(videoElement, 0, 0);
+      return canvas.toDataURL('image/jpeg', 0.8);
+    }
+    return '';
+  };
 
   return (
     <section
@@ -41,6 +94,8 @@ const Hero = () => {
             loop 
             muted 
             playsInline
+            preload="metadata"
+            poster="/assests/herovideo-poster.jpg"
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="/assests/herovideo.mp4" type="video/mp4" />
@@ -163,15 +218,25 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           {/* Background Video */}
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="/assests/herovideo.mp4" type="video/mp4" />
-          </video>
+          {shouldLoadVideo && !isSlowConnection ? (
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              preload="metadata"
+              poster="/assests/herovideo-poster.jpg"
+              onLoadedData={handleVideoLoad}
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="/assests/herovideo.mp4" type="video/mp4" />
+            </video>
+          ) : (
+            <div 
+              className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: 'url(/assests/herovideo-poster.jpg)' }}
+            ></div>
+          )}
           
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/60"></div>

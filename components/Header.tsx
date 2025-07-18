@@ -135,12 +135,12 @@ const Header = () => {
               Iniciar Sesión
             </a>
             <a 
-              href="https://app.invyperu.com/demo" 
+              href="https://app.invyperu.com/formulario" 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-yellow-400/90 backdrop-blur-lg text-gray-800 py-2 px-4 rounded-full cursor-pointer hover:bg-yellow-500 transition-all duration-300 font-medium text-center inline-block border border-yellow-300/20 shadow-lg"
             >
-              Probar Demo
+              Contrata Aquí
             </a>
           </div>
 
@@ -201,12 +201,12 @@ const Header = () => {
                 Iniciar Sesión
               </a>
               <a 
-                href="https://app.invyperu.com/demo" 
+                href="https://app.invyperu.com/formulario" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-yellow-400 text-gray-800 py-3 px-4 rounded-lg cursor-pointer hover:bg-yellow-500 transition-colors font-medium text-center shadow-sm"
               >
-                Probar Demo
+                Contrata Aquí
               </a>
             </div>
           </nav>

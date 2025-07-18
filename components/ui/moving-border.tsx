@@ -7,7 +7,7 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export function Button({
@@ -85,18 +85,25 @@ export const MovingBorder = ({
 }) => {
   const pathRef = useRef<any>();
   const progress = useMotionValue<number>(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useAnimationFrame((time) => {
+    if (!isMounted) return;
+    
     const path = pathRef.current;
     if (path) {
       try {
         const length = path.getTotalLength();
-        if (length) {
+        if (length && length > 0 && duration && duration > 0) {
           const pxPerMillisecond = length / duration;
           progress.set((time * pxPerMillisecond) % length);
         }
       } catch (error) {
-        // Element not yet rendered, skip this frame
+        // Element not yet rendered or path is empty, skip this frame
         return;
       }
     }
@@ -104,11 +111,39 @@ export const MovingBorder = ({
 
   const x = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).x,
+    (val) => {
+      if (!isMounted) return 0;
+      
+      try {
+        if (pathRef.current) {
+          const totalLength = pathRef.current.getTotalLength();
+          if (totalLength > 0 && val >= 0 && val <= totalLength) {
+            return pathRef.current.getPointAtLength(val).x;
+          }
+        }
+      } catch (error) {
+        // Path not ready yet, return default position
+      }
+      return 0;
+    },
   );
   const y = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).y,
+    (val) => {
+      if (!isMounted) return 0;
+      
+      try {
+        if (pathRef.current) {
+          const totalLength = pathRef.current.getTotalLength();
+          if (totalLength > 0 && val >= 0 && val <= totalLength) {
+            return pathRef.current.getPointAtLength(val).y;
+          }
+        }
+      } catch (error) {
+        // Path not ready yet, return default position
+      }
+      return 0;
+    },
   );
 
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;

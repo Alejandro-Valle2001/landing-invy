@@ -2,30 +2,32 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FaArrowLeft, FaPlay } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
+import Header from "../Header";
 
 export default function HeroSectionOne() {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
-      {/* Elementos decorativos de fondo */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-indigo-400/20 to-blue-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-purple-300/10 to-pink-300/10 rounded-full blur-3xl"></div>
-      </div>
+    <>
+      <Header />
+      <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen pt-6">
+        {/* Elementos decorativos de fondo */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-indigo-400/20 to-blue-400/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-purple-300/10 to-pink-300/10 rounded-full blur-3xl"></div>
+        </div>
 
-      {/* Puntos decorativos */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-2 h-2 bg-blue-400/60 rounded-full"></div>
-        <div className="absolute top-40 right-32 w-1 h-1 bg-purple-400/60 rounded-full"></div>
-        <div className="absolute bottom-32 left-32 w-3 h-3 bg-indigo-400/40 rounded-full"></div>
-        <div className="absolute bottom-20 right-20 w-1.5 h-1.5 bg-blue-400/50 rounded-full"></div>
-      </div>
+        {/* Puntos decorativos */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-2 h-2 bg-blue-400/60 rounded-full"></div>
+          <div className="absolute top-40 right-32 w-1 h-1 bg-purple-400/60 rounded-full"></div>
+          <div className="absolute bottom-32 left-32 w-3 h-3 bg-indigo-400/40 rounded-full"></div>
+          <div className="absolute bottom-20 right-20 w-1.5 h-1.5 bg-blue-400/50 rounded-full"></div>
+        </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 py-8">
-        <Navbar />
+        <div className="relative mx-auto max-w-6xl px-4 py-8">
         
-        <div className="mt-12 text-center">
+        <div className="mt-6 text-center">
           {/* Título principal */}
           <h1 className="relative z-10 mx-auto max-w-4xl text-center text-3xl font-bold md:text-5xl lg:text-6xl">
             {"Invy en solo 3 minutos"
@@ -66,22 +68,16 @@ export default function HeroSectionOne() {
             className="relative z-10 mt-6 md:mt-8 flex flex-wrap items-center justify-center gap-4"
           >
             <a 
-              href="https://app.invyperu.com/demo" 
+              href="https://app.invyperu.com/prueba30dias" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="group w-60 transform rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl backdrop-blur-sm"
+              className="group w-80 transform rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl backdrop-blur-sm"
             >
               <span className="flex items-center justify-center gap-2">
                 <FaPlay className="text-sm" />
-                Probar la demo gratuita
+                Prueba Gratuita 30 días
               </span>
             </a>
-            <Link 
-              href="/soporte"
-              className="group w-60 transform rounded-xl border border-blue-200 bg-white/80 backdrop-blur-sm px-6 py-3 font-semibold text-blue-700 transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:border-blue-300 shadow-lg hover:shadow-xl hidden md:inline-block"
-            >
-              Hablar con un experto
-            </Link>
           </motion.div>
 
           {/* Video container moderno */}
@@ -98,13 +94,12 @@ export default function HeroSectionOne() {
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-2xl blur-sm opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
                 
                 {/* Video container */}
-                <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-3 shadow-2xl">
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-1 md:p-3 shadow-2xl">
                   <div className="relative overflow-hidden rounded-xl bg-gray-900">
                     <video 
                       className="w-full h-auto aspect-video object-contain"
                       controls
                       preload="metadata"
-                      poster="/assests/dashseparado.png"
                       id="dashboard-video-hero"
                     >
                       <source src="/assests/0703.mp4" type="video/mp4" />
@@ -137,55 +132,22 @@ export default function HeroSectionOne() {
                   </div>
                   
                   {/* Indicadores decorativos */}
-                  <div className="absolute top-6 left-6 flex gap-2">
-                    <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                  <div className="absolute top-3 left-3 md:top-6 md:left-6 flex gap-1 md:gap-2">
+                    <div className="w-2 h-2 md:w-3 md:h-3 bg-red-400 rounded-full"></div>
+                    <div className="w-2 h-2 md:w-3 md:h-3 bg-yellow-400 rounded-full"></div>
+                    <div className="w-2 h-2 md:w-3 md:h-3 bg-green-400 rounded-full"></div>
                   </div>
                 </div>
               </div>
 
-              {/* Elementos flotantes decorativos */}
-              <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg shadow-lg"
-              ></motion.div>
-              
-              <motion.div
-                animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-2 -right-6 w-6 h-6 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full shadow-lg"
-              ></motion.div>
-              
-              <motion.div
-                animate={{ y: [-5, 15, -5] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-3 -left-6 w-4 h-4 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-lg shadow-lg"
-              ></motion.div>
+
             </div>
           </motion.div>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
-const Navbar = () => {
-  return (
-    <nav className="flex w-full items-center justify-between bg-white/60 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-4 shadow-lg">
-      <Link href="/" className="flex items-center text-blue-600 hover:text-blue-700 transition-colors font-semibold">
-        <FaArrowLeft className="mr-2" />
-        Volver al inicio
-      </Link>
-      <a 
-        href="https://app.invyperu.com/demo" 
-        target="_blank"
-        rel="noopener noreferrer"
-        className="transform rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-2 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl"
-      >
-        Demo gratis
-      </a>
-    </nav>
-  );
-}; 
+ 
