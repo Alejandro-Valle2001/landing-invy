@@ -8,11 +8,7 @@ import {
   FaChartLine, 
   FaBox, 
   FaBell, 
-  FaShieldAlt, 
-  FaMobile, 
-  FaCloud, 
-  FaUsers, 
-  FaCog,
+  FaShieldAlt,
   FaArrowLeft,
   FaCheck
 } from "react-icons/fa";
@@ -132,28 +128,7 @@ export default function Caracteristicas() {
     }
   };
 
-  const additionalFeatures = [
-    {
-      icon: <FaMobile className="text-4xl text-blue-600" />,
-      title: "100% Móvil",
-      description: "Accede desde cualquier dispositivo, en cualquier momento y lugar."
-    },
-    {
-      icon: <FaCloud className="text-4xl text-blue-600" />,
-      title: "En la Nube",
-      description: "Sin instalaciones, sin mantenimiento. Todo en la nube de forma segura."
-    },
-    {
-      icon: <FaUsers className="text-4xl text-blue-600" />,
-      title: "Múltiples Usuarios",
-      description: "Todo tu equipo puede trabajar simultáneamente con permisos personalizados."
-    },
-    {
-      icon: <FaCog className="text-4xl text-blue-600" />,
-      title: "Integración API",
-      description: "Conecta con tus sistemas existentes a través de nuestra API robusta."
-    }
-  ];
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -166,36 +141,7 @@ export default function Caracteristicas() {
 
 
 
-      {/* Características adicionales */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Más Ventajas que Te Encantarán
-            </h2>
-            <p className="text-xl text-gray-600">
-              Características adicionales que hacen la diferencia
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {additionalFeatures.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center p-6 rounded-xl bg-white shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="flex justify-center mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* CTA Final */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-700 py-16">
