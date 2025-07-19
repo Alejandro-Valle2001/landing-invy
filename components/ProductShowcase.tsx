@@ -159,23 +159,6 @@ const ProductShowcase = () => {
         <div className="text-center text-lg mb-8 md:text-xl">
         Controla tus productos, pedidos y reportes desde un panel intuitivo, en tiempo real y sin necesidad de instalaciones. 
         </div>
-        
-        {/* Botón Ver más características */}
-        <div className="text-center mb-12">
-          <Link href="/caracteristicas">
-            <MovingBorderButton
-              borderRadius="1rem"
-              as="button"
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
-              containerClassName="w-auto h-auto"
-              borderClassName="h-20 w-20 bg-[radial-gradient(#3b82f6_60%,transparent_40%)] opacity-[1]"
-            >
-              <div className="flex items-center justify-center py-3 px-8">
-                Ver más características
-              </div>
-            </MovingBorderButton>
-          </Link>
-        </div>
       </div>
       <div className="relative ">
         <motion.img

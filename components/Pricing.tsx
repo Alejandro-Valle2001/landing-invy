@@ -27,16 +27,11 @@ const Pricing = () => {
           
           {/* Membership Card - Plan Pro centrado */}
           <div className="relative rounded-3xl p-8 shadow-2xl border border-gray-200 w-full max-w-lg overflow-hidden">
-            {/* Video de fondo */}
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            >
-              <source src="/assests/pricingvideo.mp4" type="video/mp4" />
-            </video>
+            {/* Imagen de fondo */}
+            <div 
+              className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: 'url(/assests/fotoprecio.jpg)' }}
+            ></div>
             
             {/* Overlay oscuro para mejorar legibilidad */}
             <div className="absolute inset-0 bg-black/60"></div>
@@ -54,7 +49,6 @@ const Pricing = () => {
                 <span className="text-5xl font-black text-white">S/.129</span>
                 <span className="text-xl text-gray-200 font-medium">/mes</span>
               </div>
-              <div className="text-sm text-gray-300 line-through mb-1">S/.399/mes</div>
             </div>
 
                          <div className="mb-8">
@@ -94,7 +88,7 @@ const Pricing = () => {
                  </div>
                  <div className="flex items-center gap-3">
                    <FaCheck className="text-green-400 flex-shrink-0" />
-                   <span className="text-white">Usuarios ilimitados</span>
+                   <span className="text-white">Hasta 6 usuarios</span>
                  </div>
                  <div className="flex items-center gap-3">
                    <FaCheck className="text-green-400 flex-shrink-0" />
@@ -108,9 +102,9 @@ const Pricing = () => {
                  href="https://app.invyperu.com/formulario"
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="w-full bg-blue-600 text-white font-bold py-4 px-6 rounded-xl hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center gap-2 group"
+                 className="w-full bg-yellow-500 text-black font-bold py-4 px-6 rounded-xl hover:bg-yellow-400 transition-colors duration-300 flex items-center justify-center gap-2 group shadow-lg hover:shadow-xl"
                >
-                 Comprar ahora
+                 Contratar Ahora
                  <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
                </a>
              </div>

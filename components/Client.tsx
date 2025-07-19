@@ -7,6 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Client = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [shouldLoadVideos, setShouldLoadVideos] = useState(false);
+  const [videosLoaded, setVideosLoaded] = useState<{[key: number]: boolean}>({});
+  const sectionRef = useRef<HTMLElement>(null);
+  
   const clients = [
     {
       name: "Luis Bernal",
@@ -36,18 +40,52 @@ const Client = () => {
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Intersection Observer para cargar videos cuando la sección sea visible
   useEffect(() => {
-    const video = videoRef.current;
-      if (video) {
-          video.currentTime = 0;
-          const playPromise = video.play();
-          if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.error("La reproducción automática del video fue bloqueada.", error);
-            });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !shouldLoadVideos) {
+            setShouldLoadVideos(true);
           }
+        });
+      },
+      { 
+        threshold: 0.1, // Se activa cuando el 10% de la sección es visible
+        rootMargin: '100px' // Empieza a cargar 100px antes de que sea visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-  }, [currentIndex]);
+
+    return () => observer.disconnect();
+  }, [shouldLoadVideos]);
+
+  // Efecto para manejar la reproducción de videos cuando cambia el índice
+  useEffect(() => {
+    if (shouldLoadVideos && videosLoaded[currentIndex]) {
+      const video = videoRef.current;
+      if (video) {
+        video.currentTime = 0;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.error("La reproducción automática del video fue bloqueada.", error);
+          });
+        }
+      }
+    }
+  }, [currentIndex, shouldLoadVideos, videosLoaded]);
+
+  // Manejar la carga de videos individuales
+  const handleVideoLoad = (index: number) => {
+    setVideosLoaded(prev => ({
+      ...prev,
+      [index]: true
+    }));
+  };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? clients.length - 1 : prevIndex - 1));
@@ -60,7 +98,7 @@ const Client = () => {
   const currentClient = clients[currentIndex];
 
   return (
-    <section id="testimonios" className="pt-6 pb-0 md:pt-8 md:pb-0 lg:pt-10 lg:pb-0 px-4 bg-gradient-to-br from-gray-50 to-white">
+    <section ref={sectionRef} id="testimonios" className="pt-6 pb-0 md:pt-8 md:pb-0 lg:pt-10 lg:pb-0 px-4 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-6 md:mb-8">
@@ -93,15 +131,27 @@ const Client = () => {
                     {/* Video */}
                     <div className="w-full md:w-1/2 lg:w-5/12">
                       <div className="aspect-video md:aspect-square rounded-2xl overflow-hidden shadow-md bg-gray-900 group relative">
-                        <video
-                          ref={videoRef}
-                          src={currentClient.video}
-                          playsInline
-                          loop
-                          muted
-                          autoPlay
-                          className="w-full h-full object-cover"
-                        />
+                        {shouldLoadVideos ? (
+                          <video
+                            ref={videoRef}
+                            src={currentClient.video}
+                            playsInline
+                            loop
+                            muted
+                            autoPlay={videosLoaded[currentIndex]}
+                            preload="metadata"
+                            onLoadedData={() => handleVideoLoad(currentIndex)}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          // Placeholder mientras no se cargan los videos
+                          <div className="w-full h-full flex items-center justify-center bg-gray-800">
+                            <div className="text-white text-center">
+                              <FaPlay className="mx-auto mb-2 text-2xl opacity-50" />
+                              <p className="text-sm opacity-50">Cargando video...</p>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
 

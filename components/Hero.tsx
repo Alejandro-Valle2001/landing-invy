@@ -88,18 +88,11 @@ const Hero = () => {
       {/* Mobile Layout - Video background card */}
       <div className="block lg:hidden">
         <div className="relative bg-black rounded-3xl shadow-2xl overflow-hidden">
-          {/* Background Video */}
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            preload="metadata"
-            poster="/assests/herovideo-poster.jpg"
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="/assests/herovideo.mp4" type="video/mp4" />
-          </video>
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: 'url(/assests/fotohero.jpg)' }}
+          ></div>
           
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/60"></div>
@@ -143,7 +136,7 @@ const Hero = () => {
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.6, delay: 0.3 }}
              >
-               <span className="bg-yellow-300 text-black px-2 py-1 rounded">¿Estás perdiendo dinero por culpa de tu inventario?</span>
+               <span className="bg-yellow-300 text-black px-2 py-1 rounded">¿Tienes una tienda y necesitas un mejor control de ventas?</span>
              </motion.p>
 
              {/* Headline */}
@@ -153,7 +146,7 @@ const Hero = () => {
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8, delay: 0.4 }}
              >
-               Dale inteligencia a tu inventario y deja de perder ventas
+               Ordena tu inventario, aumenta tus ventas y gestiona tus clientes desde cualquier lugar.
              </motion.h1>
 
              {/* Description */}
@@ -163,8 +156,8 @@ const Hero = () => {
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8, delay: 0.6 }}
              >
-               <p className="text-sm text-white leading-relaxed font-semibold">
-                 ✅ Stock inteligente = más ganancias
+               <p className="text-sm text-white leading-relaxed">
+                 Empieza gratis hoy. Nosotros te guiamos paso a paso.
                </p>
              </motion.div>
 
@@ -186,24 +179,24 @@ const Hero = () => {
                     window.fbq('track', 'InitiateCheckout');
                   }
                 }}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
+                className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-black font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
                 containerClassName="w-full h-auto"
-                borderClassName="h-20 w-20 bg-[radial-gradient(#3b82f6_60%,transparent_40%)] opacity-[1]"
+                borderClassName="h-20 w-20 bg-[radial-gradient(#eab308_60%,transparent_40%)] opacity-[1]"
               >
-                <div className="flex items-center justify-center py-3 px-6">
-                  Prueba Gratis
+                <div className="flex flex-col items-center justify-center py-3 px-6">
+                  <span>Pruébalo por 30 días gratis</span>
+                  <span className="text-xs mt-1 opacity-80">
+                    (Oferta disponible hasta el {(() => {
+                      const today = new Date();
+                      const daysSinceEpoch = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
+                      const cycleDay = daysSinceEpoch % 4;
+                      const daysToAdd = 4 - cycleDay;
+                      const offerEndDate = new Date(today.getTime() + daysToAdd * 24 * 60 * 60 * 1000);
+                      return offerEndDate.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit' });
+                    })()})
+                  </span>
                 </div>
               </MovingBorderButton>
-              
-              <button 
-                onClick={() => {
-                  const section = document.getElementById('testimonios');
-                  section?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="bg-white/20 backdrop-blur-sm border-2 border-white/30 hover:border-white/50 text-white font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 hover:bg-white/30"
-              >
-                Ver casos de éxito
-              </button>
             </motion.div>
           </div>
         </div>
@@ -212,31 +205,16 @@ const Hero = () => {
       {/* Desktop Layout - Video background card */}
       <div className="hidden lg:flex justify-center">
         <motion.div
-          className="relative bg-black rounded-3xl shadow-2xl overflow-hidden max-w-4xl w-full"
+          className="relative bg-black rounded-3xl shadow-2xl overflow-hidden max-w-6xl w-full"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Background Video */}
-          {shouldLoadVideo && !isSlowConnection ? (
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline
-              preload="metadata"
-              poster="/assests/herovideo-poster.jpg"
-              onLoadedData={handleVideoLoad}
-              className="absolute inset-0 w-full h-full object-cover"
-            >
-              <source src="/assests/herovideo.mp4" type="video/mp4" />
-            </video>
-          ) : (
-            <div 
-              className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-              style={{ backgroundImage: 'url(/assests/herovideo-poster.jpg)' }}
-            ></div>
-          )}
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: 'url(/assests/fotohero.jpg)' }}
+          ></div>
           
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/60"></div>
@@ -244,7 +222,7 @@ const Hero = () => {
           <div className="relative z-10 flex justify-center items-center min-h-[80vh] lg:min-h-[700px] p-8 lg:p-16">
             
             {/* Centered Content */}
-            <div className="max-w-2xl text-center space-y-8">
+            <div className="max-w-4xl text-center space-y-8">
               
               {/* Social Proof */}
               <motion.div 
@@ -282,7 +260,7 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <span className="bg-yellow-300 text-black px-2 py-1 rounded">¿Estás perdiendo dinero por culpa de tu inventario?</span>
+                <span className="bg-yellow-300 text-black px-2 py-1 rounded">¿Tienes una tienda y necesitas un mejor control de ventas?</span>
               </motion.p>
 
               {/* Headline */}
@@ -293,7 +271,7 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <h1 className="text-3xl lg:text-4xl xl:text-5xl font-black leading-tight tracking-tighter text-white">
-                  Dale inteligencia a tu inventario y deja de perder ventas
+                  Ordena tu inventario, aumenta tus ventas y gestiona tus clientes desde cualquier lugar.
                 </h1>
               </motion.div>
 
@@ -304,37 +282,18 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <p className="text-base text-white leading-relaxed font-semibold">
-                  ✅ Stock inteligente = más ganancias
-                </p>
-                <p className="text-base text-gray-200 leading-relaxed">
-                  ❌ Exceso de stock = dinero atrapado
-                </p>
-                <p className="text-base text-gray-200 leading-relaxed">
-                  ❌ Sin stock = ventas perdidas
-                </p>
-                <p className="text-lg text-white font-medium mt-4">
-                  Controla y predice tu inventario con INVY
+                <p className="text-lg text-white font-medium">
+                  Empieza gratis hoy. Nosotros te guiamos paso a paso.
                 </p>
               </motion.div>
 
               {/* Action Buttons */}
               <motion.div 
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+                className="flex justify-center pt-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <button 
-                  onClick={() => {
-                    const section = document.getElementById('testimonios');
-                    section?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="bg-white/20 backdrop-blur-sm border-2 border-white/30 hover:border-white/50 text-white font-semibold py-3 px-6 rounded-xl text-base transition-all duration-300 hover:bg-white/30"
-                >
-                  Ver casos de éxito
-                </button>
-                
                 <MovingBorderButton
                   borderRadius="1rem"
                   as="a"
@@ -346,12 +305,22 @@ const Hero = () => {
                       window.fbq('track', 'InitiateCheckout');
                     }
                   }}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-purple-600 hover:to-blue-700 text-white font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
+                  className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-black font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
                   containerClassName="w-auto h-auto"
-                  borderClassName="h-20 w-20 bg-[radial-gradient(#3b82f6_60%,transparent_40%)] opacity-[1]"
+                  borderClassName="h-20 w-20 bg-[radial-gradient(#eab308_60%,transparent_40%)] opacity-[1]"
                 >
-                  <div className="flex items-center justify-center py-3 px-6">
-                    Prueba Gratis
+                  <div className="flex flex-col items-center justify-center py-3 px-6">
+                    <span>Pruébalo por 30 días gratis</span>
+                    <span className="text-xs mt-1 opacity-80">
+                      (Oferta disponible hasta el {(() => {
+                        const today = new Date();
+                        const daysSinceEpoch = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
+                        const cycleDay = daysSinceEpoch % 4;
+                        const daysToAdd = 4 - cycleDay;
+                        const offerEndDate = new Date(today.getTime() + daysToAdd * 24 * 60 * 60 * 1000);
+                        return offerEndDate.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit' });
+                      })()})
+                    </span>
                   </div>
                 </MovingBorderButton>
               </motion.div>
