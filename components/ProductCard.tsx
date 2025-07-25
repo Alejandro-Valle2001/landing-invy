@@ -9,7 +9,7 @@ const ProductCard = () => {
         <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80">
           Olvidate de usar Excel
         </div>
-        <div className="text-3xl md:text-4xl lg:text-5xl py-6 font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text">
+        <div className="text-3xl md:text-4xl lg:text-5xl py-6 font-bold tracking-tighter text-center bg-gradient-to-b from-white to-gray-300 text-transparent bg-clip-text">
         Convierte números en decisiones
         </div>
 

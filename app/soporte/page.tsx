@@ -3,6 +3,7 @@
 import { FaBook, FaEnvelope, FaPhone, FaArrowRight } from "react-icons/fa";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PromoBanner from "@/components/PromoBanner";
 import Link from "next/link";
 import { useMemo } from "react";
 
@@ -90,21 +91,22 @@ const SoportePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-r from-gray-900 via-gray-800 to-black">
       <Header />
+      <PromoBanner />
       
       {/* Hero Section */}
       <section className="py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80 mx-auto mb-6">
+          <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-gray-400 text-gray-300 mx-auto mb-6">
             Centro de ayuda
           </div>
           
-          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tighter bg-gradient-to-b from-white to-gray-300 text-transparent bg-clip-text mb-6">
             ¿Cómo podemos ayudarte?
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-600 mb-2 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-300 mb-2 max-w-2xl mx-auto">
             Te dejamos cuatro maneras para encontrar respuestas a tus dudas.
           </p>
         </div>
@@ -163,10 +165,10 @@ const SoportePage = () => {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4">
               Preguntas frecuentes
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-300">
               Las dudas más comunes de nuestros usuarios
             </p>
           </div>

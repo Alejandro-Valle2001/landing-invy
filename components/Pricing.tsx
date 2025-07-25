@@ -7,17 +7,17 @@ import { useState } from "react";
 
 const Pricing = () => {
   return (
-    <div id="precio" className="pt-16 pb-16 bg-gray-50">
+    <div id="precio" className="pt-16 pb-16 bg-gradient-to-r from-gray-900 via-gray-800 to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-8">
-          <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80 mx-auto mb-4">
+          <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-gray-400 text-gray-300 mx-auto mb-4">
             El éxito no tiene precio
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-center bg-gradient-to-b from-white to-gray-300 text-transparent bg-clip-text mb-4">
             Todo el poder en un solo plan
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Accede a todas las funciones sin restricciones. Sin letras pequeñas, sin complicaciones. Solo resultados.
           </p>
         </div>
@@ -46,7 +46,7 @@ const Pricing = () => {
             <div className="mb-8">
               <h3 className="text-2xl font-bold text-white mb-2">PLAN PROFESIONAL</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-5xl font-black text-white">S/.129</span>
+                <span className="text-5xl font-black text-white">S/.79</span>
                 <span className="text-xl text-gray-200 font-medium">/mes</span>
               </div>
             </div>

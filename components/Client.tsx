@@ -98,17 +98,17 @@ const Client = () => {
   const currentClient = clients[currentIndex];
 
   return (
-    <section ref={sectionRef} id="testimonios" className="pt-6 pb-0 md:pt-8 md:pb-0 lg:pt-10 lg:pb-0 px-4 bg-gradient-to-br from-gray-50 to-white">
+    <section ref={sectionRef} id="testimonios" className="pt-6 pb-0 md:pt-8 md:pb-0 lg:pt-10 lg:pb-0 px-4 bg-gradient-to-r from-gray-900 via-gray-800 to-black">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-6 md:mb-8">
-          <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-slate-300/80 mx-auto mb-4">
+          <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl border-gray-400 text-gray-300 mx-auto mb-4">
             Ellos ya lo usan
           </div>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter bg-gradient-to-b from-white to-gray-300 text-transparent bg-clip-text mb-4">
             Transformando negocios reales
           </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto hidden md:block">
+          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto hidden md:block">
             Descubre cómo empresas como la tuya han transformado su gestión de inventario con nuestra plataforma.
           </p>
         </div>

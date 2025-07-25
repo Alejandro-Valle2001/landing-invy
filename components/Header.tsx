@@ -76,7 +76,7 @@ const Header = () => {
 
   return (
     <header 
-      className={`relative sticky top-0 z-[100] bg-gradient-to-r from-blue-600 to-blue-700 backdrop-blur-xl transition-all duration-300
+      className={`relative sticky top-0 z-[100] bg-gradient-to-r from-gray-900 via-gray-800 to-black backdrop-blur-xl transition-all duration-300 border-b border-gray-700/30
         ${isScrolled ? 'py-2' : 'py-4'}`}
     >
       {/* Contenedor principal con glassmorphism */}
@@ -90,64 +90,57 @@ const Header = () => {
 
           {/* Menú centrado absolutamente - Solo desktop */}
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
-            <nav className="bg-white/10 backdrop-blur-lg rounded-full border border-white/20 shadow-lg px-2 py-1">
+            <nav className="bg-white/5 backdrop-blur-lg rounded-full border border-white/10 shadow-2xl px-2 py-1">
               <ul className="flex items-center gap-1">
+                <li>
+                  <button 
+                    onClick={() => router.push('/')} 
+                    className="block py-2 px-6 text-white hover:text-blue-300 hover:bg-white/10 transition-all duration-300 cursor-pointer font-medium rounded-full"
+                  >
+                    Home
+                  </button>
+                </li>
                 <li>
                   <a 
                     href="/caracteristicas" 
                     onClick={handleNavClick} 
-                    className="block py-2 px-4 text-white hover:text-blue-200 hover:bg-white/20 transition-all duration-300 cursor-pointer font-bold rounded-full"
+                    className="block py-2 px-6 text-white hover:text-blue-300 hover:bg-white/10 transition-all duration-300 cursor-pointer font-medium rounded-full"
                   >
-                    Beneficios
+                    Funcionalidades
                   </a>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => scrollToSection('precio')} 
-                    className="block py-2 px-4 text-white hover:text-blue-200 hover:bg-white/20 transition-all duration-300 cursor-pointer font-bold rounded-full"
-                  >
-                    Precio
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => scrollToSection('testimonios')} 
-                    className="block py-2 px-4 text-white hover:text-blue-200 hover:bg-white/20 transition-all duration-300 cursor-pointer font-bold rounded-full"
-                  >
-                    Testimonios
-                  </button>
-                </li>
-                <li>
-                  <a href="/soporte" onClick={handleNavClick} className="block py-2 px-4 text-white hover:text-blue-200 hover:bg-white/20 transition-all duration-300 font-bold rounded-full">Soporte</a>
                 </li>
               </ul>
             </nav>
           </div>
 
-          {/* Botones de acción con glassmorphism */}
+          {/* Botones de acción modernos */}
           <div className="hidden md:flex items-center gap-3">
-            <a 
-              href="https://app.invyperu.com/login" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-800 bg-white/90 backdrop-blur-lg px-4 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium text-center inline-block border border-white/20 shadow-lg"
-            >
-              Iniciar Sesión
-            </a>
+            {/* Botón Crea tu cuenta hoy */}
             <a 
               href="https://app.invyperu.com/formulario" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="bg-yellow-400/90 backdrop-blur-lg text-gray-800 py-2 px-4 rounded-full cursor-pointer hover:bg-yellow-500 transition-all duration-300 font-medium text-center inline-block border border-yellow-300/20 shadow-lg"
+              className="relative group px-6 py-2.5 bg-gradient-to-r from-pink-500 via-pink-400 to-orange-400 rounded-full text-white font-medium text-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden"
             >
-              Contrata Aquí
+              <span className="relative z-10">Crea tu cuenta hoy</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-pink-500 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </a>
+            
+            {/* Botón Hablar con ventas */}
+            <a 
+              href="https://app.invyperu.com/login" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="relative px-6 py-2.5 bg-gradient-to-r from-purple-700 to-purple-900 rounded-full text-white font-medium text-sm border border-purple-500/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-purple-600 hover:to-purple-800"
+            >
+              Hablar con ventas
             </a>
           </div>
 
           {/* Botón menú móvil */}
           <button 
             onClick={toggleMenu}
-            className="md:hidden text-white focus:outline-none z-[110] bg-white/10 backdrop-blur-lg p-2 rounded-full border border-white/20"
+            className="md:hidden text-white focus:outline-none z-[110] bg-white/5 backdrop-blur-lg p-2 rounded-full border border-white/10"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
@@ -157,56 +150,45 @@ const Header = () => {
 
       {/* Menú móvil con glassmorphism */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-white/20 shadow-xl z-[105]">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-gray-900/95 backdrop-blur-xl border-t border-gray-700/30 shadow-xl z-[105]">
           <nav className="px-6 py-4">
             <ul className="space-y-2">
+              <li>
+                <button 
+                  onClick={() => { router.push('/'); handleNavClick(); }} 
+                  className="block py-3 px-4 text-white hover:text-blue-300 hover:bg-white/10 transition-all duration-300 font-medium rounded-lg w-full text-left"
+                >
+                  Home
+                </button>
+              </li>
               <li>
                 <a 
                   href="/caracteristicas" 
                   onClick={handleNavClick} 
-                  className="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 font-bold rounded-lg"
+                  className="block py-3 px-4 text-white hover:text-blue-300 hover:bg-white/10 transition-all duration-300 font-medium rounded-lg"
                 >
-                  Beneficios
+                  Funcionalidades
                 </a>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('precio')} 
-                  className="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 font-bold rounded-lg w-full text-left"
-                >
-                  Precio
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('testimonios')} 
-                  className="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 font-bold rounded-lg w-full text-left"
-                >
-                  Testimonios
-                </button>
-              </li>
-              <li>
-                <a href="/soporte" onClick={handleNavClick} className="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 font-bold rounded-lg">Soporte</a>
               </li>
             </ul>
             
-            {/* Botones móviles */}
+            {/* Botones móviles modernos */}
             <div className="flex flex-col gap-3 mt-6">
-              <a 
-                href="https://app.invyperu.com/login" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-800 bg-white px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium text-center border shadow-sm"
-              >
-                Iniciar Sesión
-              </a>
               <a 
                 href="https://app.invyperu.com/formulario" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-yellow-400 text-gray-800 py-3 px-4 rounded-lg cursor-pointer hover:bg-yellow-500 transition-colors font-medium text-center shadow-sm"
+                className="bg-gradient-to-r from-pink-500 via-pink-400 to-orange-400 text-white py-3 px-4 rounded-lg font-medium text-center shadow-lg transition-all duration-300 hover:shadow-xl"
               >
-                Contrata Aquí
+                Crea tu cuenta hoy
+              </a>
+              <a 
+                href="https://app.invyperu.com/login" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-purple-700 to-purple-900 text-white py-3 px-4 rounded-lg font-medium text-center border border-purple-500/30 shadow-lg transition-all duration-300 hover:shadow-xl"
+              >
+                Hablar con ventas
               </a>
             </div>
           </nav>

@@ -141,15 +141,15 @@ const Testimonials = () => {
   const renderTestimonialColumn = (testimonials: any[], isHidden = false) => (
     <div className={isHidden ? "hidden md:block" : ""}>
       {testimonials.map((testimonial, index) => (
-        <div key={index} className={`shadow-xl w-[310px] rounded-2xl p-8 ${index === 1 ? 'my-6' : ''}`}>
-          <div className="font-medium pb-4">
+        <div key={index} className={`shadow-xl w-[310px] rounded-2xl p-8 ${index === 1 ? 'my-6' : ''} bg-gray-800/80 border border-gray-700`}>
+          <div className="font-medium pb-4 text-white">
             {testimonial.text}
           </div>
           <div className="flex items-center gap-3">
             <Image src={testimonial.avatar} alt="Avatar" className="h-12 w-12 rounded-full object-cover" />
             <div>
-              <div className="font-semibold">{testimonial.name}</div>
-              <div>{testimonial.username}</div>
+              <div className="font-semibold text-white">{testimonial.name}</div>
+              <div className="text-gray-300">{testimonial.username}</div>
             </div>
           </div>
         </div>
@@ -160,15 +160,15 @@ const Testimonials = () => {
   const renderMobileTestimonials = () => (
     <div className="block md:hidden">
       {allTestimonials.map((testimonial, index) => (
-        <div key={index} className="shadow-xl w-[310px] rounded-2xl p-8 mb-6">
-          <div className="font-medium pb-4">
+        <div key={index} className="shadow-xl w-[310px] rounded-2xl p-8 mb-6 bg-gray-800/80 border border-gray-700">
+          <div className="font-medium pb-4 text-white">
             {testimonial.text}
           </div>
           <div className="flex items-center gap-3">
             <Image src={testimonial.avatar} alt="Avatar" className="h-12 w-12 rounded-full object-cover" />
             <div>
-              <div className="font-semibold">{testimonial.name}</div>
-              <div>{testimonial.username}</div>
+              <div className="font-semibold text-white">{testimonial.name}</div>
+              <div className="text-gray-300">{testimonial.username}</div>
             </div>
           </div>
         </div>
@@ -179,10 +179,10 @@ const Testimonials = () => {
   return (
     <div className="pt-12">
       <div className="flex flex-col items-center px-4 sm:px-12 lg:px-28 pb-16">
-        <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl font-semibold border-slate-300/80 mx-auto">
+        <div className="border-2 w-fit p-0.5 px-3 text-sm rounded-xl font-semibold border-slate-300/80 mx-auto text-white">
           Testimonios reales
         </div>
-        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl pt-6 font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text max-w-2xl mx-auto leading-tight">
+        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl pt-6 font-bold tracking-tighter text-center bg-gradient-to-b from-white to-gray-300 text-transparent bg-clip-text max-w-2xl mx-auto leading-tight">
           Lo que dicen nuestros clientes
         </div>
       </div>

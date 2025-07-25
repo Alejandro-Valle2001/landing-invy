@@ -21,7 +21,7 @@ const CTA = () => {
   return (
     <div
       ref={sectionRef}
-      className="flex flex-col items-center pt-16 pb-24 px-14 bg-gradient-to-t from-[#afbbe4] to-white  overflow-x-clip"
+      className="flex flex-col items-center pt-16 pb-24 px-14 bg-gradient-to-r from-gray-900 via-gray-800 to-black overflow-x-clip"
     >
       <div className="max-w-[570px] flex flex-col items-center relative">
         <motion.img
@@ -84,11 +84,11 @@ const CTA = () => {
             }
           }}
         />
-        <div className="text-4xl md:text-5xl lg:text-6xl py-6 font-bold tracking-tighter text-center bg-gradient-to-b from-black to-[#002499] text-transparent bg-clip-text">
+        <div className="text-4xl md:text-5xl lg:text-6xl py-6 font-bold tracking-tighter text-center bg-gradient-to-b from-white to-gray-300 text-transparent bg-clip-text">
         Regístrate gratis hoy
         </div>
 
-        <div className="text-center text-lg mb-8 md:text-xl">
+        <div className="text-center text-lg mb-8 md:text-xl text-white">
         Celebra cada avance con una plataforma pensada para mostrar tu progreso, motivarte y ayudarte a lograr más con menos esfuerzo.
         </div>
 

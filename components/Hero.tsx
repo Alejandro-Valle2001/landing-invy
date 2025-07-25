@@ -1,14 +1,12 @@
 "use client";
 
-import { FaArrowRight } from "react-icons/fa";
-import Button from "./Button";
-import WomanImage from "@/public/assests/woman.png";
+import { motion } from "framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
+import DashHeroImage from "@/public/assests/dashhero.png";
 import AlphaImage from "@/public/assests/alpha.jpg";
 import MetaImage from "@/public/assests/meta.jpg";
 import AgurtoImage from "@/public/assests/agurto.jpg";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { Button as MovingBorderButton } from "@/components/ui/moving-border";
 
 // Declarar el tipo para Facebook Pixel
 declare global {
@@ -19,314 +17,132 @@ declare global {
 
 const Hero = () => {
   const heroRef = useRef(null);
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const [isSlowConnection, setIsSlowConnection] = useState(false);
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start end", "end start"],
-  });
-
-  const translateY = useTransform(scrollYProgress, [0, 1], [30, -30]);
-
-  // Detectar conexión lenta
-  useEffect(() => {
-    // @ts-ignore
-    if (navigator.connection) {
-      // @ts-ignore
-      const connection = navigator.connection;
-      const slowConnections = ['slow-2g', '2g', '3g'];
-      if (slowConnections.includes(connection.effectiveType) || connection.saveData) {
-        setIsSlowConnection(true);
-      }
-    }
-  }, []);
-
-  // Cargar video solo cuando el componente está visible y no hay conexión lenta
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !isSlowConnection) {
-            setShouldLoadVideo(true);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [isSlowConnection]);
-
-  const handleVideoLoad = () => {
-    setIsVideoLoaded(true);
-  };
-
-  // Función para crear poster del video si no existe
-  const generateVideoPoster = (videoElement: HTMLVideoElement) => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    if (ctx) {
-      canvas.width = videoElement.videoWidth;
-      canvas.height = videoElement.videoHeight;
-      ctx.drawImage(videoElement, 0, 0);
-      return canvas.toDataURL('image/jpeg', 0.8);
-    }
-    return '';
-  };
 
   return (
     <section
       ref={heroRef}
-      className="bg-white px-4 lg:px-8 pt-6 pb-8"
+      className="bg-gradient-to-r from-gray-900 via-gray-800 to-black px-4 lg:px-8 py-16 lg:py-24"
     >
-      {/* Mobile Layout - Video background card */}
-      <div className="block lg:hidden">
-        <div className="relative bg-black rounded-3xl shadow-2xl overflow-hidden">
-          {/* Background Image */}
-          <div 
-            className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: 'url(/assests/fotohero.jpg)' }}
-          ></div>
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/60"></div>
-          
-          {/* Content centered in card */}
-          <div className="relative z-10 flex flex-col justify-center items-center px-6 py-12 text-center">
-            
+          {/* Contenido de texto */}
+          <motion.div 
+            className="space-y-8 text-center lg:text-left"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             {/* Social Proof */}
             <motion.div 
-              className="flex items-center gap-3 mb-8"
-              initial={{ opacity: 0, y: 20 }}
+              className="flex items-center justify-center lg:justify-start gap-3"
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
             >
               <div className="flex -space-x-3">
                 <img
                   src={AlphaImage.src}
                   alt="Usuario satisfecho"
-                  className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-lg"
+                  className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
                 />
                 <img
                   src={MetaImage.src}
                   alt="Usuario satisfecho"
-                  className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-lg"
+                  className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
                 />
                 <img
                   src={AgurtoImage.src}
                   alt="Usuario satisfecho"
-                  className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-lg"
+                  className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
                 />
               </div>
-              <span className="text-sm font-semibold text-white uppercase tracking-wide">
-                <span className="font-bold text-white">611</span> EMPRESAS YA LO USAN
+              <span className="text-base font-semibold text-white uppercase tracking-wide">
+                SÉ PARTE DE INVY
               </span>
-             </motion.div>
+            </motion.div>
 
-             {/* Opening Question */}
-             <motion.p 
-               className="text-lg sm:text-xl text-white font-medium mb-4"
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.6, delay: 0.3 }}
-             >
-               <span className="bg-yellow-300 text-black px-2 py-1 rounded">¿Tienes una tienda y necesitas un mejor control de ventas?</span>
-             </motion.p>
+            {/* Título principal */}
+            <div className="space-y-6">
+              <motion.h1 
+                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                Controla tu inventario con
+                <br />
+                <span className="bg-gradient-to-r from-pink-500 via-pink-400 to-orange-400 text-transparent bg-clip-text">
+                  el sistema #1 para emprendedores en Perú
+                </span>
+              </motion.h1>
 
-             {/* Headline */}
-             <motion.h1 
-               className="text-2xl sm:text-3xl font-black leading-tight tracking-tighter mb-6 text-white"
-               initial={{ opacity: 0, y: 30 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8, delay: 0.4 }}
-             >
-               Ordena tu inventario, aumenta tus ventas y gestiona tus clientes desde cualquier lugar.
-             </motion.h1>
+              {/* Subtítulo */}
+              <motion.p 
+                className="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Automatiza procesos y olvídate del Excel complicado con Invy, la herramienta fácil y asequible para tu negocio
+              </motion.p>
+            </div>
 
-             {/* Description */}
-             <motion.div 
-               className="space-y-3 mb-8 max-w-md"
-               initial={{ opacity: 0, y: 30 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8, delay: 0.6 }}
-             >
-               <p className="text-sm text-white leading-relaxed">
-                 Empieza gratis hoy. Nosotros te guiamos paso a paso.
-               </p>
-             </motion.div>
-
-            {/* Action Buttons */}
-            <motion.div 
-              className="flex flex-col gap-4 w-full max-w-sm"
+            {/* Botón CTA */}
+            <motion.div
+              className="flex justify-center lg:justify-start"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <MovingBorderButton
-                borderRadius="1rem"
-                as="a"
-                href="https://app.invyperu.com/prueba30dias"
+              <a
+                href="https://app.invyperu.com/formulario"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {
                   if (typeof window !== 'undefined' && window.fbq) {
                     window.fbq('track', 'InitiateCheckout');
+                    window.fbq('trackCustom', 'HeroCTAClick', {
+                      button_text: 'Quiero INVY para mi negocio',
+                      section: 'hero_main',
+                      page: 'homepage'
+                    });
                   }
                 }}
-                className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-black font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
-                containerClassName="w-full h-auto"
-                borderClassName="h-20 w-20 bg-[radial-gradient(#eab308_60%,transparent_40%)] opacity-[1]"
+                className="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-pink-500 via-pink-400 to-orange-400 text-white font-semibold text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 overflow-hidden"
               >
-                <div className="flex flex-col items-center justify-center py-3 px-6">
-                  <span>Pruébalo por 30 días gratis</span>
-                  <span className="text-xs mt-1 opacity-80">
-                    (Oferta disponible hasta el {(() => {
-                      const today = new Date();
-                      const daysSinceEpoch = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
-                      const cycleDay = daysSinceEpoch % 4;
-                      const daysToAdd = 4 - cycleDay;
-                      const offerEndDate = new Date(today.getTime() + daysToAdd * 24 * 60 * 60 * 1000);
-                      return offerEndDate.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit' });
-                    })()})
-                  </span>
-                </div>
-              </MovingBorderButton>
+                <span className="relative z-10">Quiero INVY para mi negocio</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-pink-500 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </a>
             </motion.div>
-          </div>
-        </div>
-      </div>
 
-      {/* Desktop Layout - Video background card */}
-      <div className="hidden lg:flex justify-center">
-        <motion.div
-          className="relative bg-black rounded-3xl shadow-2xl overflow-hidden max-w-6xl w-full"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Background Image */}
-          <div 
-            className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: 'url(/assests/fotohero.jpg)' }}
-          ></div>
-          
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/60"></div>
-          
-          <div className="relative z-10 flex justify-center items-center min-h-[80vh] lg:min-h-[700px] p-8 lg:p-16">
-            
-            {/* Centered Content */}
-            <div className="max-w-4xl text-center space-y-8">
+
+          </motion.div>
+
+          {/* Imagen del dashboard */}
+          <motion.div 
+            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-4 rounded-3xl shadow-2xl border border-gray-700">
+              <Image
+                src={DashHeroImage}
+                alt="Dashboard de Invy - Sistema de gestión empresarial"
+                className="w-full h-auto rounded-2xl shadow-lg"
+                priority
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxAAPwCdABmX/9k="
+              />
               
-              {/* Social Proof */}
-              <motion.div 
-                className="flex items-center justify-center gap-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <div className="flex -space-x-3">
-                  <img
-                    src={AlphaImage.src}
-                    alt="Usuario satisfecho"
-                    className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
-                  />
-                  <img
-                    src={MetaImage.src}
-                    alt="Usuario satisfecho"
-                    className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
-                  />
-                  <img
-                    src={AgurtoImage.src}
-                    alt="Usuario satisfecho"
-                    className="w-10 h-10 rounded-full border-3 border-white object-cover shadow-lg"
-                  />
-                </div>
-                <span className="text-base font-semibold text-white uppercase tracking-wide">
-                  <span className="font-bold text-white">611</span> EMPRESAS YA LO USAN
-                </span>
-              </motion.div>
-
-              {/* Opening Question */}
-              <motion.p 
-                className="text-xl lg:text-2xl text-white font-medium"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <span className="bg-yellow-300 text-black px-2 py-1 rounded">¿Tienes una tienda y necesitas un mejor control de ventas?</span>
-              </motion.p>
-
-              {/* Headline */}
-              <motion.div 
-                className="space-y-4"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <h1 className="text-3xl lg:text-4xl xl:text-5xl font-black leading-tight tracking-tighter text-white">
-                  Ordena tu inventario, aumenta tus ventas y gestiona tus clientes desde cualquier lugar.
-                </h1>
-              </motion.div>
-
-              {/* Description */}
-              <motion.div 
-                className="space-y-3"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <p className="text-lg text-white font-medium">
-                  Empieza gratis hoy. Nosotros te guiamos paso a paso.
-                </p>
-              </motion.div>
-
-              {/* Action Buttons */}
-              <motion.div 
-                className="flex justify-center pt-4"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-              >
-                <MovingBorderButton
-                  borderRadius="1rem"
-                  as="a"
-                  href="https://app.invyperu.com/prueba30dias"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    if (typeof window !== 'undefined' && window.fbq) {
-                      window.fbq('track', 'InitiateCheckout');
-                    }
-                  }}
-                  className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-black font-semibold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-base"
-                  containerClassName="w-auto h-auto"
-                  borderClassName="h-20 w-20 bg-[radial-gradient(#eab308_60%,transparent_40%)] opacity-[1]"
-                >
-                  <div className="flex flex-col items-center justify-center py-3 px-6">
-                    <span>Pruébalo por 30 días gratis</span>
-                    <span className="text-xs mt-1 opacity-80">
-                      (Oferta disponible hasta el {(() => {
-                        const today = new Date();
-                        const daysSinceEpoch = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
-                        const cycleDay = daysSinceEpoch % 4;
-                        const daysToAdd = 4 - cycleDay;
-                        const offerEndDate = new Date(today.getTime() + daysToAdd * 24 * 60 * 60 * 1000);
-                        return offerEndDate.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit' });
-                      })()})
-                    </span>
-                  </div>
-                </MovingBorderButton>
-              </motion.div>
+              {/* Elementos decorativos */}
+              <div className="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-br from-pink-500 to-orange-400 rounded-full opacity-20 blur-xl"></div>
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-20 blur-xl"></div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

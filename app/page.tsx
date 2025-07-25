@@ -2,14 +2,14 @@
 
 import { useEffect } from "react";
 import BrandSlide from "@/components/BrandSlide";
-import Client from "@/components/Client";
+import ExcelVsInvy from "@/components/ExcelVsInvy";
 import CTA from "@/components/CTA";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Pricing from "@/components/Pricing";
-
+import PromoBanner from "@/components/PromoBanner";
 import ProductShowcase from "@/components/ProductShowcase";
 import Testimonials from "@/components/Testimonials";
 
@@ -44,12 +44,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-black min-h-screen">
       <Header />
+      <PromoBanner />
       <Hero/>
       {/* <BrandSlide/> */}
       <ProductShowcase/>
-      <Client/>
+      <ExcelVsInvy/>
       <Pricing/>
       <Testimonials/>
       <CTA/>
